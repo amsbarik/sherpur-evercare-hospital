@@ -1,0 +1,182 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Sherpur Evercare Hospital">
+
+	<meta property="og:url" content="https://doccure.dreamstechnologies.com/html/">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Doctors Appointment HTML Website Templates | Doccure">
+	<meta property="og:description" content="The responsive professional Doccure template offers many features, like scheduling appointments with  top doctors, clinics, and hospitals via voice, video call & chat.">
+	<meta property="og:image" content="assets/img/preview-banner.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta property="twitter:domain" content="https://doccure.dreamstechnologies.com/html/">
+	<meta property="twitter:url" content="https://doccure.dreamstechnologies.com/html/">
+	<meta name="twitter:title" content="Doctors Appointment HTML Website Templates | Doccure">
+	<meta name="twitter:description" content="The responsive professional Doccure template offers many features, like scheduling appointments with  top doctors, clinics, and hospitals via voice, video call & chat.">
+	<meta name="twitter:image" content="assets/img/preview-banner.jpg">	
+
+    <!-- Mobile Web-app fullscreen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- Apple Touch Icon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+
+	<!-- Theme Settings Js -->
+	<script src="{% static 'js/theme-script.js' %}" type="9e23900936eebe2e9d697be4-text/javascript"></script>
+
+    <!-- custom css link -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/fancybox/jquery.fancybox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/wow/css/animate.css' %}">
+	<link rel="stylesheet" href="{% static 'css/iconsax.css' %}">
+	<link rel="stylesheet" href="{% static 'css/feather.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+    {% if site_setting %}
+    <meta name="description" content="{{ site_setting.meta_description }}">
+    <meta name="keywords" content="{{ site_setting.meta_keywords }}">
+    {% endif %}
+
+    <title>
+        {% block title %}
+            {% if site_setting %}{{ site_setting.meta_title }}{% endif %}
+        {% endblock title %}
+    </title>
+
+    <!-- Favicon -->
+    {% if site_setting and site_setting.favicon %}
+	<link rel="shortcut icon" href="{{ site_setting.favicon.url }}" type="image/x-icon">
+    {% endif %}
+
+
+</head>
+
+
+
+<body>
+    
+
+    <!-- Main Wrapper start -->
+    <main  class="main-wrapper">
+
+        <!-- theme switch -->
+		<!-- <div class="header-theme header-theme-two">
+			<button type="button" id="dark-mode-toggle" class="theme-toggle moon">
+				<i class="isax isax-moon5"></i>
+			</button>
+			<button type="button" id="light-mode-toggle" class="theme-toggle sun">
+				<i class="isax isax-sun-15"></i>
+			</button>
+		</div> -->
+
+        <!-- success message  -->
+        {% if messages %}
+        <div class="messages" style="position: fixed; right: 16px; top: 108px; z-index: 100;">
+            {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} d-flex align-items-center" role="alert">
+                <span class="flex-grow-1">{{ message }}</span>
+                <button type="button" class="btn-close ms-3" aria-label="Close" onclick="this.parentElement.remove();"></button>
+            </div>
+            {% endfor %}
+        </div>
+
+        <script>
+            // Auto remove alerts after 3 seconds
+            setTimeout(function() {
+                document.querySelectorAll('.alert').forEach(alert => {
+                    alert.remove();
+                });
+            }, 4000);
+        </script>
+        {% endif %}
+
+
+        <!-- header  -->
+        {% block header %}
+            {% include 'layouts/header.html' %}
+        {% endblock header %}
+        
+
+        <!-- main content  -->
+        {% block content %}
+        
+        {% endblock content %}
+
+        <!-- footer  -->
+        {% block footer %}
+            {% include 'layouts/footer.html' %}
+        {% endblock footer %}
+
+    </main>
+    <!-- main wrapper end -->
+
+
+	<!-- ScrollToTop -->
+	<div class="progress-wrap active-progress">
+		<svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+			<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+				style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919px, 307.919px; stroke-dashoffset: 228.265px;">
+			</path>
+		</svg>
+	</div>
+	<!-- ScrollToTop End -->
+
+	<!-- jQuery -->
+	<!-- <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.7.1.min.js" type="9e23900936eebe2e9d697be4-text/javascript"></script> -->
+
+	<!-- Bootstrap Core JS -->
+	<script src="{% static 'js/bootstrap.bundle.min.js' %}" type="9e23900936eebe2e9d697be4-text/javascript"></script>
+
+	<!-- Slick JS -->
+	<script src="{% static 'js/slick.js' %}" type="9e23900936eebe2e9d697be4-text/javascript"></script>
+
+	<!-- BacktoTop JS -->
+	<script src="{% static 'js/backToTop.js' %}" type="9e23900936eebe2e9d697be4-text/javascript"></script>
+		
+	<!-- Fancybox JS -->
+	<script src="{% static 'plugins/fancybox/jquery.fancybox.min.js' %}" type="9e23900936eebe2e9d697be4-text/javascript"></script>
+
+	<!-- Wow JS -->
+	<script src="{% static 'plugins/wow/js/wow.min.js' %}" type="9e23900936eebe2e9d697be4-text/javascript"></script>
+
+	<!-- Gsap JS -->
+	<script src="{% static 'plugins/gsap/gsap.min.js' %}" type="9e23900936eebe2e9d697be4-text/javascript"></script>
+
+	<!-- Custom JS -->
+	<script src="{% static 'js/script.js' %}" type="9e23900936eebe2e9d697be4-text/javascript"></script>
+
+
+    <!-- <script>
+        // FAQ js start 
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+
+                const currentItem = question.parentElement;
+
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== currentItem) {
+                        item.classList.remove('active');
+                    }
+                });
+
+                // Toggle current item
+                currentItem.classList.toggle('active');
+            });
+        });
+
+        // FAQ js end 
+    </script> -->
+</body>
+</html>

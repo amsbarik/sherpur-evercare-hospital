@@ -1,0 +1,15 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/padmaawt/padmaawtresthouse.com.bd"
+PassengerBaseURI "/"
+PassengerPython "/home/padmaawt/virtualenv/padmaawtresthouse.com.bd/3.13/bin/python"
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+# Serve static files
+RewriteEngine On
+
+# Serve static files from STATIC_ROOT
+RewriteCond %{REQUEST_URI} ^/static/
+RewriteRule ^static/(.*)$ /staticfiles/$1 [L]
+
+# Serve media files from MEDIA_ROOT
+RewriteCond %{REQUEST_URI} ^/media/
+RewriteRule ^media/(.*)$ /media/$1 [L]
