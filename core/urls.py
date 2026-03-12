@@ -9,7 +9,8 @@ urlpatterns = [
 
 
     # admin panel urls 
-     path("hero-overview/", views.hero_overview, name="hero_overview"),
+     path("admin/hero-overview-form/", views.hero_overview_form, name="hero_overview_form"),
+     path("admin/demo-list/", views.demo_list, name="demo_list"),
 
 ]
 
