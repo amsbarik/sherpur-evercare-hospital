@@ -30,6 +30,10 @@ ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = ['https://padmaawtresthouse.com.bd', 'https://www.padmaawtresthouse.com.bd', 'www.padmaawtresthouse.com.bd', 'padmaawtresthouse.com.bd', 'mail.padmaawtresthouse.com.bd']
 
 
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
+
 
 # Application definition
 

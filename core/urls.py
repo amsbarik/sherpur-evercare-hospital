@@ -10,7 +10,6 @@ urlpatterns = [
 
     # admin panel urls 
      path("admin/hero-overview-form/", views.hero_overview_form, name="hero_overview_form"),
-     path("admin/demo-list/", views.demo_list, name="demo_list"),
 
 ]
 

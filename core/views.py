@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required, user_passes_test
+
+from user_auth.views import is_superuser
 
 from .models import HeroOverview
 from .forms import HeroOverviewForm
+
 
 
 # Create your views here.
@@ -16,6 +20,9 @@ def index(request):
 # //////////////////////////////////////
 # admin panel views start 
 
+
+@login_required
+@user_passes_test(is_superuser)
 def hero_overview_form(request):
     hero = HeroOverview.objects.first()
 
@@ -32,6 +39,3 @@ def hero_overview_form(request):
 
 
 
-# demo
-def demo_list(request):
-    return render(request, 'core/admin/demo_list.html')
