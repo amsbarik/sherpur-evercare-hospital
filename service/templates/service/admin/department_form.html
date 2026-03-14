@@ -1,13 +1,13 @@
 {% extends 'admin/layouts/master.html' %}
 {% load crispy_forms_tags %}
 
-{% block title %} Hero Overview Form {% endblock title %}
+{% block title %} Department Form {% endblock title %}
 
 
 {% block content %}
 
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <h6 class="fw-semibold mb-0">Hero Overview Form</h6>
+    <h6 class="fw-semibold mb-0">Department Form</h6>
     <ul class="d-flex align-items-center gap-2">
         <li class="fw-medium">
             <a href="{% url 'dashboard' %}" class="d-flex align-items-center gap-1 hover-text-primary">
@@ -16,7 +16,7 @@
             </a>
         </li>
         <li>-</li>
-        <li class="fw-medium">Hero Overview</li>
+        <li class="fw-medium">Department</li>
     </ul>
 </div>
 
@@ -30,13 +30,13 @@
         <div class="card-body" style="padding: 36px;">
             <div class="row row-cols-1 row-cols-md-">
                 <div class="col">
-                    {{ form.heading | as_crispy_field }}
+                    {{ form.name | as_crispy_field }}
                 </div>
                 <div class="col">
-                    {{ form.image | as_crispy_field }}
+                    {{ form.slug | as_crispy_field }}
                 </div>
                 <div class="col">
-                    {{ form.calling_photo | as_crispy_field }}
+                    {{ form.department_icon | as_crispy_field }}
                 </div>
             
                 <div class="col">
@@ -45,7 +45,7 @@
             </div>
 
             <div>
-                {{ form.short_description | as_crispy_field }}
+                {{ form.description | as_crispy_field }}
             </div>
             <div class="mt-3">
                 {{ form.is_active | as_crispy_field }}
@@ -53,7 +53,7 @@
             
             <div class="mt-5">
                 <button type="submit" class="btn btn-primary mt-4 me-3  px-5">Submit</button>
-                <a href="{% url 'dashboard' %}" class="btn btn-dark mt-4  px-5"> Cancel</a>
+                <a href="{% url 'department_list' %}" class="btn btn-dark mt-4  px-5"> Cancel</a>
             </div>
         </div>
     </div>

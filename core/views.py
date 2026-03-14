@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 from user_auth.views import is_superuser
 
+from service.models import Service, Department
+
 from .models import HeroOverview
 from .forms import HeroOverviewForm
 
@@ -12,7 +14,17 @@ from .forms import HeroOverviewForm
 
 def index(request):
 
-    return render(request, 'core/index.html')
+    hero_overview = HeroOverview.objects.first()
+    departments = Department.objects.filter(is_active=True).order_by('order')[:12]
+    services = Service.objects.filter(is_active=True).order_by('order')[:11]
+
+    context = {
+        'hero_overview': hero_overview,
+        'departments': departments,
+        'services': services,
+    }
+
+    return render(request, 'core/index.html', context)
 
 
 

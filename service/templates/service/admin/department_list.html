@@ -1,0 +1,179 @@
+{% extends 'admin/layouts/master.html' %}
+{% load custom_filters %}
+{% load static %}
+
+{% block title %} Department List {% endblock title %}
+
+
+{% block content %} 
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Department List</h6>
+    <ul class="d-flex align-items-center gap-2">
+        <li class="fw-medium">
+            <a href="{% url 'dashboard' %}" class="d-flex align-items-center gap-1 hover-text-primary">
+            <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+            Dashboard
+            </a>
+        </li>
+        <li>-</li>
+        <li class="fw-medium">Departments</li>
+    </ul>
+</div>
+    
+<div class="card">
+
+    <!-- card-header start  -->
+    <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
+        <div class="d-flex flex-wrap align-items-center gap-3">
+            <div class="d-flex align-items-center gap-2">
+            <span>Show</span>
+            <select class="form-select form-select-sm w-auto">
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+            </select>
+            </div>
+            <div class="icon-field">
+            <input type="text" name="#0" class="form-control form-control-sm w-auto" placeholder="Search">
+            <span class="icon">
+                <iconify-icon icon="ion:search-outline"></iconify-icon>
+            </span>
+            </div>
+        </div>
+
+        <div class="d-flex flex-wrap align-items-center gap-3">
+            <!-- <select class="form-select form-select-sm w-auto">
+                <option>Satatus</option>
+                <option>Paid</option>
+                <option>Pending</option>
+            </select> -->
+            <a href="{% url 'department_create' %}" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i> Create Department</a>
+        </div>
+    </div>
+
+
+    <!-- card-body start  -->
+    <div class="card-body">
+
+        <!-- table start  -->
+        <table class="table bordered-table mb-0">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <div class="form-check style-check d-flex align-items-center">
+                            <input class="form-check-input" type="checkbox" value="" id="checkAll">
+                            <label class="form-check-label" for="checkAll">ID </label>
+                        </div>
+                    </th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Order</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for department in departments %}
+                <tr>
+                    <td>
+                        <div class="form-check style-check d-flex align-items-center">
+                            <input class="form-check-input" type="checkbox" value="" id="check{{ department.id }}">
+                            <label class="form-check-label text-primary-600" for="check{{ department.id }}">
+                                #{{ department.id }}
+                            </label>
+                        </div>
+                    </td>
+
+                    <td class="cell"><span>{{ department.created_at | abbreviate_month }}</span><br> <span class="note" style="font-size: 13px;">{{ department.created_at | time:"h:i A" }}</span></td>
+                        
+                    <td>
+                        <div class="d-flex align-items-center">
+                            {% if department.department_icon %}
+                            <img src="{{ department.department_icon.url }}" alt="Image" style="width: 44px; height: auto; object-fit: contain;" class="flex-shrink-0 me-12 radius-8">
+                            {% endif %}
+                            <h6 class="text-md mb-0 fw-medium flex-grow-1">{{ department.name }}</h6>
+                        </div>
+                    </td>
+
+                    <td>{{ department.description }}</td>
+
+                    <!-- <td>
+                        <div class="d-flex align-items-center">
+                            <img src="assets/images/user-list/user-list1.png" alt="Image" class="flex-shrink-0 me-12 radius-8">
+                            <h6 class="text-md mb-0 fw-medium flex-grow-1">Kathryn Murphy</h6>
+                        </div>
+                    </td> -->
+
+                    <!-- <td> <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Paid</span> </td> -->
+
+                    <td class="cell">{% if department.order %} {{ department.order  }}{% else %} N/A {% endif %} </td>
+                    <td class="cell">{{ department.is_active | active_inactive }}</td>
+                        
+
+
+
+                    <!-- actions  -->
+                    <td>
+                        <!-- <a href="javascript:void(0)" class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center">
+                            <iconify-icon icon="iconamoon:eye-light"></iconify-icon>
+                        </a> -->
+                        <a href="{% url 'department_update' department.id %}" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                            <iconify-icon icon="lucide:edit"></iconify-icon>
+                        </a>
+                        <!-- <a href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                            <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
+                        </a> -->
+                    </td>
+                </tr>
+                {% endfor %}
+              
+            
+            </tbody>
+        </table>
+        <!-- table end  -->
+
+
+
+
+
+        <!-- Pagination start  -->
+        <!-- <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-24">
+            <span>Showing 1 to 10 of 12 entries</span>
+            <ul class="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
+            <li class="page-item">
+                <a class="page-link text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px bg-base"
+                href="javascript:void(0)"><iconify-icon icon="ep:d-arrow-left" class="text-xl"></iconify-icon></a>
+            </li>
+            <li class="page-item">
+                <a class="page-link bg-primary-600 text-white fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
+                href="javascript:void(0)">1</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link bg-primary-50 text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
+                href="javascript:void(0)">2</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link bg-primary-50 text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
+                href="javascript:void(0)">3</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px bg-base"
+                href="javascript:void(0)"> <iconify-icon icon="ep:d-arrow-right" class="text-xl"></iconify-icon> </a>
+            </li>
+            </ul>
+        </div> -->
+        <!-- Pagination end  -->
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock content %}</h1>
+
+  

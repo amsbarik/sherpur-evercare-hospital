@@ -7,7 +7,7 @@ from django.db import models
 
 class BaseModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    order = models.PositiveIntegerField(default=0)
+    order = models.PositiveIntegerField(default=0, blank=True)
     is_active = models.BooleanField(default=True)
 
     class Meta:
@@ -20,6 +20,7 @@ class HeroOverview(BaseModel):
     short_description = models.TextField()
     # visit_url = models.URLField(default='https://', blank=True, null=True)
     # button_name = models.CharField(max_length=50, default='Visit Now')
+    calling_photo = models.ImageField(upload_to='slider/', blank=True)
     image = models.ImageField(upload_to='slider/')
 
     def __str__(self):
