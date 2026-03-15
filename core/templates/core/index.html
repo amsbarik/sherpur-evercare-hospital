@@ -145,8 +145,10 @@
 					<!-- About Img -->
 					<div class="col-lg-6">
 						<div class="about-img-two wow fadeInUp" data-wow-duration="2s">
-							<img src="assets/img/about/about.png" alt="about" class="img-fluid">
-							<a href="https://youtu.be/MyQxnFgPgQU?si=Z9y2WdynImbFnqL2" data-fancybox>
+							{% if about_us.photo %}
+							<img src="{{ about_us.photo.url }}" alt="about" class="img-fluid">
+							{% endif %}
+							<a href="{{ about_us.video_url }}" target="_blank" data-fancybox>
 								<button class="animate-button" data-text="Play Video · Play Video ·">
 									<p class="button-text"></p>
 									<span class="button-circle">
@@ -162,9 +164,10 @@
 					<div class="col-lg-6">
 						<div class="about-content-two">
 							<div class="section-header section-header-two">
-								<div class="section-sub-title"><img src="assets/img/icons/section-icon.svg" alt="icon">About Us</div>
-								<h2 class="section-title">We Understand That Each One Is Unique & Their <span>Health Journey.</span></h2>
-								<p>We aim to provide faster diagnosis, clearer insights, and more accurate treatment decisions ensuring every patient receives safe, precise, and personalized care.</p>
+								<div class="section-sub-title"><img src="{% static 'img/icons/section-icon.svg' %}" alt="icon">About Us</div>
+								<!-- <h2 class="section-title">We Understand That Each One Is Unique & Their <span>Health Journey.</span></h2> -->
+								<h2 class="section-title">{{ about_us.heading }}</h2>
+								<p>{{ about_us.short_message }}</p>
 							</div>
 							<div class="row g-4">
 								<div class="col-md-6">
@@ -172,11 +175,11 @@
 										<div class="mission-inner">
 											<div class="mission-info">
 												<div class="mission-icon bg-primary">
-													<img src="assets/img/icons/mission.svg" alt="mission" class="img-fluid">
+													<img src="{% static 'img/icons/mission.svg' %}" alt="mission" class="img-fluid">
 												</div>
 												<h3 class="custom-title">Our Mission</h3>
 											</div>
-											<p>To deliver compassionate, patient-first healthcare by combining expert clinical judgment with technology.</p>
+											<p style="height: 100%;">{{ about_us.mission }}</p>
 										</div>
 									</div>
 								</div>
@@ -185,11 +188,11 @@
 										<div class="mission-inner">
 											<div class="mission-info">
 												<div class="mission-icon bg-secondary">
-													<img src="assets/img/icons/vision.svg" alt="vision" class="img-fluid">
+													<img src="{% static 'img/icons/vision.svg' %}" alt="vision" class="img-fluid">
 												</div>
 												<h3 class="custom-title">Our Vision</h3>
 											</div>
-											<p>Empower doctors to detect conditions earlier, improve outcomes, and redefine the future of modern healthcare.</p>
+											<p style="height: 100%;">{{ about_us.vision }}</p>
 										</div>
 									</div>
 								</div>
@@ -201,7 +204,7 @@
 
 				</div>
 			</div>
-			<img src="assets/img/bg/about-bg.png" alt="icon" class="img-fluid about-bg-01">
+			<img src="{% static 'img/bg/about-bg.png' %}" alt="icon" class="img-fluid about-bg-01">
 		</section>
 		<!-- About Section End -->
 
