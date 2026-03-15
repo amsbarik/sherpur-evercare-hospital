@@ -1,0 +1,132 @@
+{% extends 'layouts/master.html' %}
+{% load static %}
+{% load custom_filters %}
+
+
+{% block title %} Blog details {% endblock title %}
+
+{% block content %}
+
+<!-- page-top -->
+<!-- <section class="page-top margin-top" style="background-image: url();">
+    <div class="page-top-wrap">
+        <h1 class="text-capitalize sub-heading">Latest Blogs</h1>
+        <ul class="d-flex">
+            <li><a href="{% url 'index' %}" class="link">Home</a></li>
+            <li><a href="#" class="link"><i class="fa-solid fa-angle-right mx-2"></i></a></li>
+            <li><a href="#" class="link">Blogs</a></li>
+        </ul>
+    </div>
+</section> -->
+
+<!-- blog -->
+<section class="section-padding pt-3 blog-details margin-top">
+    <div class="container">
+        <div class="blog-details-wrap">
+            {% if blog.cover_photo %}
+            <img src="{{ blog.cover_photo.url }}" class="cover-img rounded" alt="{{ blog.title }}">
+            {% endif %}
+
+            <div class="d-flex mt-3 mt-md-4">
+                <h5 class="blog-tag rounded-pill me-3 me-md-4">{{ blog.category.name }}</h5>
+                <p class="card-text">{{ blog.updated_at | abbreviate_month }}</p>
+            </div>
+
+            <h2 class="heading mt-3">{{ blog.title }}</h2>
+
+            <p class="text mt-3 mt-md-4">{{ blog.intro }}</p>
+
+            {% if blog.paragraph_01 %}
+            <p class="text mt-3 mt-md-4">{{ blog.paragraph_01 }}</p>
+            {% endif %}
+
+            {% if blog.comment %}
+            <div class="bg-light p-4 rounded mt-3 mt-md-4">
+                <p class="text fst-italic m-0"><i class="fa-solid fa-quote-left quote"></i>{{ blog.comment }}</p>
+            </div>
+            {% endif %}
+
+            {% if blog.paragraph_02 %}
+            <p class="text mt-3 mt-md-4">{{ blog.paragraph_02 }}</p>
+            {% endif %}
+
+
+            <!-- gellary start -->
+            {% if blog.gallery_title %}
+            <h5 class="title mt-4 mt-md-5">{{ blog.gallery_title }}</h5>
+            {% endif %}
+
+            {% if blog.paragraph_03 %}
+            <p class="text mt-3 mt-md-4 mb-3 mb-md-4">{{ blog.paragraph_03 }}</p>
+            {% endif %}
+
+            <div class="row g-3 g-lg-4">
+                <div class="col-6">
+                    {% if blog.gallery_image_01 %}
+                    <img src="{{ blog.gallery_image_01.url }}" class="detail-img1 rounded" alt="{{ blog.title }}">
+                    {% endif %}
+                </div>
+
+                <div class="col-6">
+                    {% if blog.gallery_image_02 %}
+                    <img src="{{ blog.gallery_image_02.url }}" class="detail-img2 rounded" alt="{{ blog.title }}">
+                    {% endif %}
+
+                    {% if blog.gallery_image_03 %}
+                    <img src="{{ blog.gallery_image_03.url }}" class="detail-img2 rounded mt-3 mt-lg-4" alt="{{ blog.title }}">
+                    {% endif %}
+                </div>
+            </div>
+
+            
+
+            <!-- highlight start -->
+             {% if blog.highlight_title %}
+            <h5 class="title mt-4 mt-md-5">{{ blog.highlight_title }}</h5>
+            {% endif %}
+
+            <ul class="key-point-list text">
+                {% if blog.key_point_01 %}
+                <li class="key-point"><i class="fa-solid fa-check me-2 me-md-3"></i>{{ blog.key_point_01 }}</li>
+                {% endif %}
+                {% if blog.key_point_02 %}
+                <li class="key-point"><i class="fa-solid fa-check me-2 me-md-3"></i>{{ blog.key_point_02 }}</li>
+                {% endif %}
+                {% if blog.key_point_03 %}
+                <li class="key-point"><i class="fa-solid fa-check me-2 me-md-3"></i>{{ blog.key_point_03 }}</li>
+                {% endif %}
+                {% if blog.key_point_04 %}
+                <li class="key-point"><i class="fa-solid fa-check me-2 me-md-3"></i>{{ blog.key_point_04 }}</li>
+                {% endif %}
+                {% if blog.key_point_05 %}
+                <li class="key-point"><i class="fa-solid fa-check me-2 me-md-3"></i>{{ blog.key_point_05 }}</li>
+                {% endif %}
+                {% if blog.key_point_06 %}
+                <li class="key-point"><i class="fa-solid fa-check me-2 me-md-3"></i>{{ blog.key_point_06 }}</li>
+                {% endif %}
+                {% if blog.key_point_07 %}
+                <li class="key-point"><i class="fa-solid fa-check me-2 me-md-3"></i>{{ blog.key_point_07 }}</li>
+                {% endif %}
+            </ul>
+
+            {% if blog.paragraph_04 %}
+            <p class="text  mt-3 mt-md-4">{{ blog.paragraph_04 }}</p>
+            {% endif %}
+
+            {% if blog.paragraph_05 %}
+            <p class="text  mt-3 mt-md-4">{{ blog.paragraph_05 }}</p>
+            {% endif %}
+
+
+                <br>
+                <br>
+                <hr>
+            <a href="{% url 'blogs' %}" class="link" target="_parent">Read more blogs</a>
+
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock content %}

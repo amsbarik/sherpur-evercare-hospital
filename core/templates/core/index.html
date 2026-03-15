@@ -1,5 +1,6 @@
 {% extends 'layouts/master.html' %}
 {% load static %}
+{% load custom_filters %}
 
 {% block title %}    {% endblock title %}
 
@@ -506,13 +507,13 @@
 				<div class="row">
 					<div class="col-xl-5">
 						<div class="work-img-two">
-							<img src="assets/img/about/about-01.png" alt="work" class="img-fluid">
+							<img src="{% static 'img/about/about-01.png' %}" alt="work" class="img-fluid">
 						</div>
 					</div>
 
 					<div class="col-xl-7 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1s">
 						<div class="section-header section-header-two text-start">
-							<div class="section-sub-title"><img src="assets/img/icons/section-icon.svg" alt="icon">How it Works</div>
+							<div class="section-sub-title"><img src="{% static 'img/icons/section-icon.svg' %}" alt="icon">How it Works</div>
 							<h2 class="section-title mb-0">4 Easy Steps to <span>Get Your Solution</span></h2>
 						</div>
 						<div class="row g-4">
@@ -521,7 +522,7 @@
 							<div class="col-md-6 d-flex">
 								<div class="work-item w-100 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1s">
 									<div class="work-icon">
-										<img src="assets/img/icons/search.svg" alt="search doctor">	
+										<img src="{% static 'img/icons/search.svg' %}" alt="search doctor">	
 									</div>
 									<div>
 										<h3 class="custom-title">Search Doctor</h3>
@@ -535,7 +536,7 @@
 							<div class="col-md-6 d-flex">
 								<div class="work-item w-100 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1s">
 									<div class="work-icon">
-										<img src="assets/img/icons/profile.svg" alt="profile">	
+										<img src="{% static 'img/icons/profile.svg' %}" alt="profile">	
 									</div>
 									<div>
 										<h3 class="custom-title">Check Profile</h3>
@@ -549,7 +550,7 @@
 							<div class="col-md-6 d-flex">
 								<div class="work-item w-100 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1s">
 									<div class="work-icon">
-										<img src="assets/img/icons/schedule.svg" alt="booking">	
+										<img src="{% static 'img/icons/schedule.svg' %}" alt="booking">	
 									</div>
 									<div>
 										<h3 class="custom-title">Schedule Boooking</h3>
@@ -563,7 +564,7 @@
 							<div class="col-md-6 d-flex">
 								<div class="work-item w-100 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1s">
 									<div class="work-icon">
-										<img src="assets/img/icons/solution.svg" alt="your solution">	
+										<img src="{% static 'img/icons/solution.svg' %}" alt="your solution">	
 									</div>
 									<div>
 										<h3 class="custom-title">Get Your Solution</h3>
@@ -577,27 +578,25 @@
 					</div>
 				</div>
 			</div>
-			<img src="assets/img/bg/about-bg.png" alt="bg" class="img-fluid work-bg-01">
-			<img src="assets/img/bg/work-bg.png" alt="bg" class="work-bg-02">
-			<img src="assets/img/bg/work-bg-01.png" alt="bg" class="work-bg-03">
-			<img src="assets/img/bg/work-bg-02.png" alt="bg" class="work-bg-04">
+			<img src="{% static 'img/bg/about-bg.png' %}" alt="bg" class="img-fluid work-bg-01">
+			<img src="{% static 'img/bg/work-bg.png' %}" alt="bg" class="work-bg-02">
+			<img src="{% static 'img/bg/work-bg-01.png' %}" alt="bg" class="work-bg-03">
+			<img src="{% static 'img/bg/work-bg-02.png' %}" alt="bg" class="work-bg-04">
 		</section>
 		<!-- Work Section End -->
 
 		<!-- Testimonial Section -->
-		<section class="section testimonial-section-two">
+		<!-- <section class="section testimonial-section-two">
 			<div class="container-fluid">
 
-				<!-- Section Header -->
 				<div class="section-header section-header-two">
 					<div class="section-sub-title"><img src="assets/img/icons/section-icon.svg" alt="icon">Client Reviews</div>
 					<h2 class="section-title mb-0">What Our Patients <span>Say About Us</span></h2>
 				</div>
-				<!-- Section Header End -->
+			
 
 				<div class="testimonial-slider-two">
 
-					<!-- Testimonial Item -->
 					<div class="testimonial-item-two">
 						<div class="testimonial-author-img">
 							<img src="assets/img/patients/patient22.jpg" class="rounded-circle" alt="patient">
@@ -622,97 +621,18 @@
 							</div>
 						</div>
 					</div>
-					<!-- Testimonial Item End -->
+			
 
-					<!-- Testimonial Item -->
-					<div class="testimonial-item-two">
-						<div class="testimonial-author-img">
-							<img src="assets/img/patients/patient25.jpg" class="rounded-circle" alt="patient">
-						</div>
-						<div class="quote-icon">
-							<img src="assets/img/icons/quote-icon-01.svg" alt="quote">
-						</div>
-						<div class="testimonial-content">
-							<p class="description">The care I received at this hospital was exceptional. The doctors explained everything clearly, the nurses were incredibly kind, and the facilities were spotless. I felt safe, supported, and genuinely cared for throughout my stay. Truly one of the best healthcare experiences.</p>
-						</div>
-						<div class="testimonial-author-info">
-							<div>
-								<h3 class="custom-title">Jeni Adams</h3>
-								<p class="author-location">Los Boston, USA</p>
-							</div>
-							<div class="rating">
-								<i class="fa-solid fa-star filled me-1"></i>
-								<i class="fa-solid fa-star filled me-1"></i>
-								<i class="fa-solid fa-star filled me-1"></i>
-								<i class="fa-solid fa-star filled me-1"></i>
-								<i class="fa-solid fa-star filled"></i>
-							</div>
-						</div>
-					</div>
-					<!-- Testimonial Item End -->
-
-					<!-- Testimonial Item -->
-					<div class="testimonial-item-two">
-						<div class="testimonial-author-img">
-							<img src="assets/img/patients/patient24.jpg" class="rounded-circle" alt="patient">
-						</div>
-						<div class="quote-icon">
-							<img src="assets/img/icons/quote-icon-01.svg" alt="quote">
-						</div>
-						<div class="testimonial-content">
-							<p class="description">Exceptional service and a friendly atmosphere. The staff is knowledgeable and truly cares about their patients health, ensuring every visit is enjoyable.</p>
-						</div>
-						<div class="testimonial-author-info">
-							<div>
-								<h3 class="custom-title">Mike Smith</h3>
-								<p class="author-location">San Francisco, CA</p>
-							</div>
-							<div class="rating">
-								<i class="fa-solid fa-star filled me-1"></i>
-								<i class="fa-solid fa-star filled me-1"></i>
-								<i class="fa-solid fa-star filled me-1"></i>
-								<i class="fa-solid fa-star filled me-1"></i>
-								<i class="fa-solid fa-star filled"></i>
-							</div>
-						</div>
-					</div>
-					<!-- Testimonial Item End -->
-
-					<!-- Testimonial Item -->
-					<div class="testimonial-item-two">
-						<div class="testimonial-author-img">
-							<img src="assets/img/patients/patient27.jpg" class="rounded-circle" alt="patient">
-						</div>
-						<div class="quote-icon">
-							<img src="assets/img/icons/quote-icon-01.svg" alt="quote">
-						</div>
-						<div class="testimonial-content">
-							<p class="description">The staff is knowledgeable and truly cares about their patients health, ensuring every visit is enjoyable. Exceptional service and a friendly atmosphere.</p>
-						</div>
-						<div class="testimonial-author-info">
-							<div>
-								<h3 class="custom-title">Mark Andrew</h3>
-								<p class="author-location">San Francisco, CA</p>
-							</div>
-							<div class="rating">
-								<i class="fa-solid fa-star filled me-1"></i>
-								<i class="fa-solid fa-star filled me-1"></i>
-								<i class="fa-solid fa-star filled me-1"></i>
-								<i class="fa-solid fa-star filled me-1"></i>
-								<i class="fa-solid fa-star filled"></i>
-							</div>
-						</div>
-					</div>
-					<!-- Testimonial Item End -->
+	
 
 				</div>
 
 			</div>
-		</section>
+		</section> -->
 		<!-- Testimonial Section End -->
 
 		<!-- App Section -->
-		<section class="app-section-two">
+		<!-- <section class="app-section-two">
 			<div class="container">
 				<div class="company-slider-two">
 					<div class="slide-item">
@@ -761,7 +681,7 @@
 					<img src="assets/img/bg/app-bg-05.png" alt="img" class="app-bg-01">
 				</div>
 			</div>
-		</section>
+		</section> -->
 		<!-- App Section End -->	
 
 		<!-- Blog Section -->
@@ -770,138 +690,38 @@
 
 				<!-- Section Header -->
 				<div class="section-header section-header-two">
-					<div class="section-sub-title"><img src="assets/img/icons/section-icon.svg" alt="icon">Blogs & Articles</div>
+					<div class="section-sub-title"><img src="{% static 'img/icons/section-icon.svg' %}" alt="icon">Blogs & Articles</div>
 					<h2 class="section-title mb-0">Latest News & Stories</h2>
 				</div>
 				<!-- Section Header End -->
 
 				<div class="row justify-content-center g-4">
+
+					{% for blog in blogs %}
 					<div class="col-lg-4 col-md-6 d-flex">
 
 						<!-- Blog Post -->
-						<div class="blog-item-two w-100 wow fadeInUp" data-wow-duration="1s">
-							<div class="blog-img">
-								<a href="blog-details.html">
-									<img class="img-fluid" src="assets/img/blog/general-blog-01.jpg" alt="blog">
-								</a>
-								<a href="blog-grid.html" class="badge">Health Awareness</a>
-							</div>
-							<div class="blog-content">
-								<div class="blog-user-info">
-									<div class="blog-user">
-										<a href="#" class="avatar avatar-md">
-											<img src="assets/img/patients/patient12.jpg" class="img-fluid rounded-circle" alt="user">
-										</a>
-										<a href="#">Grace Morgan</a>
-									</div>
-									<p class="date">10, Sep 2026</p>
-								</div>
-								<h3 class="custom-title"><a href="blog-details.html">The Importance of Early Diagnosis: Why Timing Matters...</a></h3>
-								<p class="mb-0">Early diagnosis can dramatically improve treatment success. Detecting conditions in their earliest...</p>
-							</div>
-						</div>
+						{% include 'blog/components/blog_card.html' %}
 						<!-- Blog Post End -->
 
 					</div>
-					<div class="col-lg-4 col-md-6 d-flex">
-
-
-						<!-- Blog Post -->
-						<div class="blog-item-two w-100 wow fadeInUp" data-wow-duration="1s">
-							<div class="blog-img">
-								<a href="blog-details.html">
-									<img class="img-fluid" src="assets/img/blog/general-blog-02.jpg" alt="blog">
-								</a>
-								<a href="blog-grid.html" class="badge">Healthcare Technology</a>
-							</div>
-							<div class="blog-content">
-								<div class="blog-user-info">
-									<div class="blog-user">
-										<a href="#" class="avatar avatar-md">
-											<img src="assets/img/patients/patient20.jpg" class="img-fluid rounded-circle" alt="user">
-										</a>
-										<a href="#">Daniel Scott</a>
-									</div>
-									<p class="date">15, Sep 2026</p>
-								</div>
-								<h3 class="custom-title"><a href="blog-details.html">How Technology Is Transforming Modern Hospitals</a></h3>
-								<p class="mb-0">Hospitals today use advanced diagnostics, AI tools, robotic surgeries, and digital health records...</p>
-							</div>
-						</div>
-						<!-- Blog Post End -->
-
-					</div>
-					<div class="col-lg-4 col-md-6 d-flex">
-
-						<!-- Blog Post -->
-						<div class="blog-item-two w-100 wow fadeInUp" data-wow-duration="1s">
-							<div class="blog-img">
-								<a href="blog-details.html">
-									<img class="img-fluid" src="assets/img/blog/general-blog-03.jpg" alt="blog">
-								</a>
-								<a href="blog-grid.html" class="badge">General Dentistry</a>
-							</div>
-							<div class="blog-content">
-								<div class="blog-user-info">
-									<div class="blog-user">
-										<a href="#" class="avatar avatar-md">
-											<img src="assets/img/patients/patient21.jpg" class="img-fluid rounded-circle" alt="user">
-										</a>
-										<a href="#">Jacob Allen</a>
-									</div>
-									<p class="date">25, Sep 2026</p>
-								</div>
-								<h3 class="custom-title"><a href="blog-details.html">How Technology Is Transforming Modern Hospitals</a></h3>
-								<p class="mb-0">Hospitals today use advanced diagnostics, AI tools, robotic surgeries, and digital health records...</p>
-							</div>
-						</div>
-						<!-- Blog Post End -->
-
-					</div>
+					{% endfor %}
+					
 				</div>
 				<div class="view-all text-center wow fadeInUp" data-wow-duration="1s">
-					<a href="blog-list.html" class="btn btn-md btn-dark">View All Blogs</a>
+					<a href="{% url 'blogs' %}" class="btn btn-md btn-dark">View All Blogs</a>
 				</div>
 			</div>
 		</section>
 		<!-- Blog Section End -->
 
-		<!-- Health Section -->
-		<section class="section health-section trail-content">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-10 mx-auto">
-						<div class="content-img">
-							<div class="content-img-single">
-								<img src="assets/img/about/health-03.jpg" class="img-fluid" alt="health">
-							</div>
-						</div>
-						<div class="content-img">
-							<div class="content-img-single">
-								<img src="assets/img/about/health-04.jpg" class="img-fluid" alt="health">
-							</div>
-						</div>
-						<div class="content-img">
-							<div class="content-img-single">
-								<img src="assets/img/about/health-05.jpg" class="img-fluid" alt="health">
-							</div>
-						</div>
-						<div class="health-content">
-							<h2><span class="health-img"><img src="assets/img/about/health-01.jpg" alt="health" class="img-fluid"></span> From common illnesses to chronic disease management, we deliver <span class="avatar-list-stacked avatar-group-lg"><span class="avatar"><img src="assets/img/patients/patient24.jpg" alt="patient" class="img-fluid rounded-circle"></span><span class="avatar"><img src="assets/img/patients/patient25.jpg" alt="patient" class="img-fluid rounded-circle"></span><span class="avatar"><img src="assets/img/patients/patient26.jpg" alt="patient" class="img-fluid rounded-circle"></span><span class="avatar"><img src="assets/img/patients/patient27.jpg" alt="patient" class="img-fluid rounded-circle"></span></span> personalized care designed to improve your long-term health. <span class="health-img"><img src="assets/img/about/health-02.jpg" alt="health" class="img-fluid"></span></h2>
-						</div>
-					</div>
-				</div>
-			</div>
-			<img src="assets/img/bg/doctor-bg-01.png" alt="bg" class="img-fluid health-bg-01">
-			<img src="assets/img/bg/banner-05.png" alt="bg" class="img-fluid health-bg-02">
-		</section>
-		<!-- Health Section End -->
+
 
 		
 
 		<!-- Cursor -->
-		<div class="mouse-cursor cursor-outer"></div>
-		<div class="mouse-cursor cursor-inner"></div>
+		<!-- <div class="mouse-cursor cursor-outer"></div>
+		<div class="mouse-cursor cursor-inner"></div> -->
 		<!-- /Cursor -->
 
 {% endblock content %}

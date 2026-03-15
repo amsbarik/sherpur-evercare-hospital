@@ -1,0 +1,42 @@
+{% extends 'layouts/master.html' %}
+{% load static %}
+{% load custom_filters %}
+
+
+{% block title %} Blogs {% endblock title %}
+
+{% block content %}
+
+
+<!-- page top start -->
+<section class="page-top margin-top" style="padding-top: 90px; background-image: url({% static 'img/top-cover.jpg' %});">
+    <div class="container">
+        <div class="page-top-wrap">
+            <h1 class="text-capitalize sub-heading text-white">Latest Blogs</h1>
+            <ul class="d-flex">
+                <li><a href="{% url 'index' %}" class="link text-white">Home</a></li>
+                <li><a href="#" class="link text-white"><i class="fa-solid fa-angle-right mx-2"></i></a></li>
+                <li><a href="#" class="link text-white">Blogs</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- blog -->
+<section class="blogs section-padding">
+    <div class="container">
+        <div class="row g-3 g-md-4 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4">
+            {% for blog in blogs %}
+            <div class="col">
+                {% include 'components/blog_card.html' %}
+            </div>
+            {% endfor %}
+
+        </div> 
+        
+    </div>
+</section>
+
+
+
+{% endblock content %}

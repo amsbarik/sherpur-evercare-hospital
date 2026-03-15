@@ -1,0 +1,27 @@
+{% load static %}
+{% load custom_filters %}
+
+<div class="blog-item-two w-100 wow fadeInUp" data-wow-duration="1s">
+    <div class="blog-img">
+        {% if blog.cover_photo %}
+        <a href="blog-details.html">
+            <img class="img-fluid" src="{{ blog.cover_photo.url }}" alt="blog">
+        </a>
+        {% endif %}
+        
+    </div>
+    <div class="blog-content">
+        <div class="blog-user-info">
+            <!-- <div class="blog-user">
+                <a href="#" class="avatar avatar-md">
+                    <img src="assets/img/patients/patient12.jpg" class="img-fluid rounded-circle" alt="user">
+                </a>
+                <a href="#">Grace Morgan</a>
+            </div> -->
+            <a href="#" class="badg">{{ blog.category }} </a>
+            <p class="date">{{ blog.created_at |abbreviate_month }}</p>
+        </div>
+        <h3 class="custom-title"><a href="blog-details.html">{{ blog.title| truncatechars:34 }} </a></h3>
+        <p class="mb-0">{{ blog.intro|truncatechars:64 }}</p>
+    </div>
+</div>

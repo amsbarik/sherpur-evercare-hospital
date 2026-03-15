@@ -35,6 +35,14 @@ class FAQ(BaseModel):
         return self.question
     
 
+# class HowItWork(BaseModel):
+#     question = models.CharField(max_length=255)
+#     answer = models.TextField()
+
+#     def __str__(self):
+#         return self.question
+    
+
 
 class SiteSetting(models.Model):
     # Branding

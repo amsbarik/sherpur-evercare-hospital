@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'core',
     'service',
     'about_us',
+    'blog',
 ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"

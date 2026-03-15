@@ -98,8 +98,8 @@
 
 					</div>
 				</div>
-				<img src="assets/img/bg/footer-bg-06.png" alt="bg" class="footer-bg-01">
-				<img src="assets/img/bg/footer-bg-07.png" alt="bg" class="footer-bg-02">
+				<img src="{% static 'img/bg/footer-bg-06.png' %}" alt="bg" class="footer-bg-01">
+				<img src="{% static 'img/bg/footer-bg-07.png' %}" alt="bg" class="footer-bg-02">
 			</div>
 			<!-- /Footer Top -->
 
@@ -110,7 +110,9 @@
 					<!-- Copyright -->
 					<div class="copyright">
 						<div class="copyright-text">
-							<p class="mb-0">Copyright &copy; 2025 Doccure. All Rights Reserved</p>
+							<p class="mb-0">Copyright &copy; 
+								<script>document.write( new Date().getFullYear())</script>
+								All Rights Reserved | Sherpur Evercare Hospital</p>
 						</div>
 						<div class="copyright-menu">
 							<ul>
