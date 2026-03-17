@@ -1,14 +1,14 @@
 {% extends 'admin/layouts/master.html' %}
 {% load crispy_forms_tags %}
 
-{% block title %} Service Form {% endblock title %}
+{% block title %} Doctor Schedule Form {% endblock title %}
 
 
 
 {% block content %}
 
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <h6 class="fw-semibold mb-0">Service Form</h6>
+    <h6 class="fw-semibold mb-0">Doctor Schedule Form</h6>
     <ul class="d-flex align-items-center gap-2">
         <li class="fw-medium">
             <a href="{% url 'dashboard' %}" class="d-flex align-items-center gap-1 hover-text-primary">
@@ -17,9 +17,10 @@
             </a>
         </li>
         <li>-</li>
-        <li class="fw-medium">Service</li>
+        <li class="fw-medium">Schedule</li>
     </ul>
 </div>
+
 
 <!-- form start  -->
 <form action="" method="POST" class="form mb-5 " enctype="multipart/form-data"> {% csrf_token %}
@@ -31,13 +32,19 @@
         <div class="card-body" style="padding: 36px;">
             <div class="row row-cols-1 row-cols-md-2">
                 <div class="col">
-                    {{ form.name | as_crispy_field }}
+                    {{ form.doctor | as_crispy_field }}
                 </div>
                 <div class="col">
-                    {{ form.slug | as_crispy_field }}
+                    {{ form.day_of_week | as_crispy_field }}
                 </div>
                 <div class="col">
-                    {{ form.department | as_crispy_field }}
+                    {{ form.start_time | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.end_time | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.max_patients | as_crispy_field }}
                 </div>
             
                 <div class="col">
@@ -45,20 +52,14 @@
                 </div>
             </div>
 
-            <div class="mt-3">
-                    {{ form.service_icon | as_crispy_field }}
-            </div>
-
-            <div class="mt-3">
-                {{ form.description | as_crispy_field }}
-            </div>
+            
             <div class="mt-3">
                 {{ form.is_active | as_crispy_field }}
             </div>
             
             <div class="mt-5">
                 <button type="submit" class="btn btn-primary mt-4 me-3  px-5">Submit</button>
-                <a href="{% url 'service_list' %}" class="btn btn-dark mt-4  px-5"> Cancel</a>
+                <a href="{% url 'doctor_schedule_list' %}" class="btn btn-dark mt-4  px-5"> Cancel</a>
             </div>
         </div>
     </div>

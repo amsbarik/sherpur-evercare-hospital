@@ -2,13 +2,13 @@
 {% load custom_filters %}
 {% load static %}
 
-{% block title %} Service List {% endblock title %}
+{% block title %} Specializations List {% endblock title %}
 
 
 {% block content %} 
 
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <h6 class="fw-semibold mb-0">Service List</h6>
+    <h6 class="fw-semibold mb-0">Specialization List</h6>
     <ul class="d-flex align-items-center gap-2">
         <li class="fw-medium">
             <a href="{% url 'dashboard' %}" class="d-flex align-items-center gap-1 hover-text-primary">
@@ -17,7 +17,7 @@
             </a>
         </li>
         <li>-</li>
-        <li class="fw-medium">Services</li>
+        <li class="fw-medium">Specializations</li>
     </ul>
 </div>
     
@@ -48,7 +48,7 @@
                 <option>Paid</option>
                 <option>Pending</option>
             </select> -->
-            <a href="{% url 'service_create' %}" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i> Create Service</a>
+            <a href="{% url 'specialization_create' %}" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i> Create Specialization</a>
         </div>
     </div>
 
@@ -68,7 +68,6 @@
                     </th>
                     <th scope="col">Updated At</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Department</th>
                     <th scope="col">Order</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
@@ -77,33 +76,30 @@
 
 
             <tbody>
-                {% for service in services %}
+                {% for specialization in specializations %}
                 <tr>
                     <td>
                         <div class="form-check style-check d-flex align-items-center">
-                            <input class="form-check-input" type="checkbox" value="" id="check{{ service.id }}">
-                            <label class="form-check-label text-primary-600" for="check{{ service.id }}">
-                                #{{ service.id }}
+                            <input class="form-check-input" type="checkbox" value="" id="check{{ specialization.id }}">
+                            <label class="form-check-label text-primary-600" for="check{{ specialization.id }}">
+                                #{{ specialization.id }}
                             </label>
                         </div>
                     </td>
 
-                    <td class="cell"><span>{{ service.created_at | abbreviate_month }}</span><br> <span class="note" style="font-size: 13px;">{{ service.created_at | time:"h:i A" }}</span></td>
+                    <td class="cell"><span>{{ specialization.created_at | abbreviate_month }}</span><br> <span class="note" style="font-size: 13px;">{{ specialization.created_at | time:"h:i A" }}</span></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            {% if service.service_icon %}
-                            <img src="{{ service.service_icon.url }}" alt="Image" style="width: 44px; height: auto; object-fit: contain;" class="flex-shrink-0 me-12 radius-8">
-                            {% endif %}
-                            <h6 class="text-md mb-0 fw-medium flex-grow-1">{{ service.name }}</h6>
+                            
+                            <h6 class="text-md mb-0 fw-medium flex-grow-1">{{ specialization.name }}</h6>
                         </div>
                     </td>
 
-                    <td>{{ service.department }}</td>
                     
                     <!-- <td> <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Paid</span> </td> -->
 
-                    <td class="cell">{% if service.order %} {{ service.order  }}{% else %} N/A {% endif %} </td>
-                    <td class="cell">{{ service.is_active | active_inactive }}</td>
+                    <td class="cell">{% if specialization.order %} {{ specialization.order  }}{% else %} N/A {% endif %} </td>
+                    <td class="cell">{{ specialization.is_active | active_inactive }}</td>
                         
 
 
@@ -112,7 +108,7 @@
                         <!-- <a href="javascript:void(0)" class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center">
                             <iconify-icon icon="iconamoon:eye-light"></iconify-icon>
                         </a> -->
-                        <a href="{% url 'service_update' service.id %}" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                        <a href="{% url 'specialization_update' specialization.id %}" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
                             <iconify-icon icon="lucide:edit"></iconify-icon>
                         </a>
                         <!-- <a href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">

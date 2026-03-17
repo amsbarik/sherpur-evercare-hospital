@@ -57,6 +57,24 @@
         </li>
 
         <!-- section  -->
+        <li class="sidebar-menu-group-title">Doctors & Hospital</li>
+
+        <!-- dropdown submenu  -->
+        <li class="dropdown">
+            <a href="javascript:void(0)">
+            <iconify-icon icon="icon-park-outline:setting-two" class="menu-icon"></iconify-icon>
+            <span>Doctors Manage</span>
+            </a>
+            <!-- submenu urls -->
+            <ul class="sidebar-submenu">
+                <li><a href="{% url 'hospital_list' %}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Hospitals</a></li>
+                <li><a href="{% url 'specialization_list' %}"><i class="ri-circle-fill circle-icon text-warning-600 w-auto"></i> Specialization</a></li>
+                <li><a href="{% url 'doctor_list' %}"><i class="ri-circle-fill circle-icon text-warning-600 w-auto"></i> Doctors</a></li>
+                <li><a href="{% url 'doctor_schedule_list' %}"><i class="ri-circle-fill circle-icon text-warning-600 w-auto"></i> Doctor Schedule</a></li>
+            </ul>
+        </li>
+
+        <!-- section  -->
         <li class="sidebar-menu-group-title">Settings</li>
 
         <!-- dropdown submenu  -->

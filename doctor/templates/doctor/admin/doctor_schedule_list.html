@@ -2,13 +2,13 @@
 {% load custom_filters %}
 {% load static %}
 
-{% block title %} Service List {% endblock title %}
+{% block title %} Doctor Schedule List {% endblock title %}
 
 
 {% block content %} 
 
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <h6 class="fw-semibold mb-0">Service List</h6>
+    <h6 class="fw-semibold mb-0">Doctor Schedule List</h6>
     <ul class="d-flex align-items-center gap-2">
         <li class="fw-medium">
             <a href="{% url 'dashboard' %}" class="d-flex align-items-center gap-1 hover-text-primary">
@@ -17,7 +17,7 @@
             </a>
         </li>
         <li>-</li>
-        <li class="fw-medium">Services</li>
+        <li class="fw-medium">Schedule</li>
     </ul>
 </div>
     
@@ -48,7 +48,7 @@
                 <option>Paid</option>
                 <option>Pending</option>
             </select> -->
-            <a href="{% url 'service_create' %}" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i> Create Service</a>
+            <a href="{% url 'doctor_schedule_create' %}" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i> Create Schedule</a>
         </div>
     </div>
 
@@ -67,8 +67,11 @@
                         </div>
                     </th>
                     <th scope="col">Updated At</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Department</th>
+                    <th scope="col">Doctor Name</th>
+                    <th scope="col">Day of week</th>
+                    <th scope="col">Start Time</th>
+                    <th scope="col">End Time</th>
+                    <th scope="col">Max Patients</th>
                     <th scope="col">Order</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
@@ -76,34 +79,36 @@
             </thead>
 
 
+
             <tbody>
-                {% for service in services %}
+                {% for schedule in schedules %}
                 <tr>
                     <td>
                         <div class="form-check style-check d-flex align-items-center">
-                            <input class="form-check-input" type="checkbox" value="" id="check{{ service.id }}">
-                            <label class="form-check-label text-primary-600" for="check{{ service.id }}">
-                                #{{ service.id }}
+                            <input class="form-check-input" type="checkbox" value="" id="check{{ schedule.id }}">
+                            <label class="form-check-label text-primary-600" for="check{{ schedule.id }}">
+                                #{{ schedule.id }}
                             </label>
                         </div>
                     </td>
 
-                    <td class="cell"><span>{{ service.created_at | abbreviate_month }}</span><br> <span class="note" style="font-size: 13px;">{{ service.created_at | time:"h:i A" }}</span></td>
+                    <td class="cell"><span>{{ schedule.created_at | abbreviate_month }}</span><br> <span class="note" style="font-size: 13px;">{{ schedule.created_at | time:"h:i A" }}</span></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            {% if service.service_icon %}
-                            <img src="{{ service.service_icon.url }}" alt="Image" style="width: 44px; height: auto; object-fit: contain;" class="flex-shrink-0 me-12 radius-8">
-                            {% endif %}
-                            <h6 class="text-md mb-0 fw-medium flex-grow-1">{{ service.name }}</h6>
+                           
+                            <h6 class="text-md mb-0 fw-medium flex-grow-1">{{ schedule.doctor }}</h6>
                         </div>
                     </td>
 
-                    <td>{{ service.department }}</td>
+                    <td>{{ schedule.day_of_week }}</td>
+                    <td>{{ schedule.start_time }}</td>
+                    <td>{{ schedule.end_time }}</td>
+                    <td>{{ schedule.max_patients }}</td>
                     
                     <!-- <td> <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Paid</span> </td> -->
 
-                    <td class="cell">{% if service.order %} {{ service.order  }}{% else %} N/A {% endif %} </td>
-                    <td class="cell">{{ service.is_active | active_inactive }}</td>
+                    <td class="cell">{% if schedule.order %} {{ schedule.order  }}{% else %} N/A {% endif %} </td>
+                    <td class="cell">{{ schedule.is_active | active_inactive }}</td>
                         
 
 
@@ -112,7 +117,7 @@
                         <!-- <a href="javascript:void(0)" class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center">
                             <iconify-icon icon="iconamoon:eye-light"></iconify-icon>
                         </a> -->
-                        <a href="{% url 'service_update' service.id %}" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                        <a href="{% url 'doctor_schedule_update' schedule.id %}" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
                             <iconify-icon icon="lucide:edit"></iconify-icon>
                         </a>
                         <!-- <a href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
