@@ -52,7 +52,7 @@ class DoctorForm(forms.ModelForm):
         model = Doctor
         fields = '__all__'
         widgets = {
-            'hospitals': forms.CheckboxSelectMultiple,
+            # 'hospitals': forms.CheckboxSelectMultiple,
             'specializations': forms.CheckboxSelectMultiple,
         }
 

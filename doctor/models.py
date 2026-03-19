@@ -26,15 +26,17 @@ class Doctor(BaseModel):
     slug = models.SlugField(unique=True, blank=True)
 
     department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name="doctors")
-    hospitals = models.ManyToManyField(Hospital, related_name="doctors", blank=True)
+    hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE, related_name="doctors", blank=True, default=1)
     specializations = models.ManyToManyField(Specialization, related_name="doctors", blank=True) 
 
     designation = models.CharField(max_length=150)
     qualification = models.CharField(max_length=200)
-    experience_years = models.PositiveIntegerField(default=0)
+    experience_years = models.PositiveIntegerField(blank=True)
     doctor_image = models.ImageField(upload_to="doctors/")
     bio = models.TextField(blank=True)
     consultation_fee = models.DecimalField(max_digits=10, decimal_places=2)
+    
+    is_available = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         if not self.slug:

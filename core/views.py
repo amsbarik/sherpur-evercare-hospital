@@ -6,6 +6,7 @@ from user_auth.views import is_superuser
 from service.models import Service, Department
 from about_us.models import AboutUs
 from blog.models import Blog
+from doctor.models import Doctor
 
 from .models import HeroOverview
 from .forms import HeroOverviewForm
@@ -22,12 +23,15 @@ def index(request):
     services = Service.objects.filter(is_active=True).order_by('order')[:11]
     blogs = Blog.objects.filter(is_active=True).order_by('order')[:3]
 
+    doctors = Doctor.objects.filter(is_active=True).order_by('order')[:8]
+
     context = {
         'hero_overview': hero_overview,
         'about_us': about_us,
         'departments': departments,
         'services': services,
         'blogs': blogs,
+        'doctors': doctors,
     }
 
     return render(request, 'core/index.html', context)

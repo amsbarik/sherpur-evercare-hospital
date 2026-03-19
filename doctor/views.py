@@ -97,7 +97,7 @@ def specialization_form(request, pk=0):
 @login_required
 @user_passes_test(is_superuser)
 def doctor_list(request):
-    doctors = Doctor.objects.select_related('department').prefetch_related('hospitals', 'specializations').order_by('created_at')
+    doctors = Doctor.objects.select_related('department').prefetch_related('specializations').order_by('created_at')
     return render(request, 'doctor/admin/doctor_list.html', {'doctors': doctors})
 
 
