@@ -1,15 +1,116 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 from core.views import is_superuser
+from service.models import Department
 
 from .models import Hospital, Specialization, Doctor, DoctorSchedule
 from .forms import HospitalForm, SpecializationForm, DoctorForm, DoctorScheduleForm
 
+
+
 # Create your views here.
 
 
+def doctors(request, slug=None):
+    doctors = Doctor.objects.filter(is_active=True)
 
+    department = None
+    query = request.GET.get('search_query', '').strip()
+    specializations = request.GET.getlist('specialization')  # 🔥 multiple
+    genders = request.GET.getlist('gender')  # 🔥 multiple
+
+    # 🔹 Department filter
+    if slug:
+        department = get_object_or_404(Department, slug=slug)
+        doctors = doctors.filter(department=department)
+
+    # 🔹 Search
+    if query:
+        doctors = doctors.filter(
+            Q(name__icontains=query) |
+            Q(designation__icontains=query) |
+            Q(specializations__name__icontains=query)
+        )
+
+    # 🔹 Specialization filter
+    if specializations:
+        doctors = doctors.filter(specializations__id__in=specializations)
+
+    # 🔹 Gender filter
+    if genders:
+        doctors = doctors.filter(gender__in=genders)
+
+    doctors = doctors.distinct().order_by('order')
+
+    context = {
+        'doctors': doctors,
+        'department': department,
+        'query': query,
+        'selected_specializations': specializations,
+        'selected_genders': genders,
+        'all_specializations': Specialization.objects.all(),
+    }
+
+    return render(request, 'doctor/doctors.html', context)
+
+
+
+
+
+
+
+# def doctors(request, slug=None):
+#     doctors = Doctor.objects.filter(is_active=True)
+
+#     department = None
+#     query = request.GET.get('search_query')
+
+#     # 🔹 Department filter
+#     if slug:
+#         department = get_object_or_404(Department, slug=slug)
+#         doctors = doctors.filter(department=department)
+
+#     # 🔹 Search filter
+#     if query:
+#         doctors = doctors.filter(
+#             Q(name__icontains=query) |
+#             Q(designation__icontains=query) |
+#             Q(specializations__name__icontains=query)
+#         ).distinct()
+
+#     doctors = doctors.order_by('order')
+
+#     context = {
+#         'doctors': doctors,
+#         'department': department,
+#         'query': query,
+#     }
+
+#     return render(request, 'doctor/doctors.html', context)
+
+
+
+
+# def doctors(request):
+
+#     doctors = Doctor.objects.filter(is_active=True).order_by('order')
+
+#     context = {
+#         'doctors': doctors,
+#     }
+
+#     return render(request, 'doctor/doctors.html', context)
+
+
+
+
+
+# doctor_details
+def doctor_details(request, slug):
+
+    return render(request, 'doctor/doctor_details.html')
 
 
 

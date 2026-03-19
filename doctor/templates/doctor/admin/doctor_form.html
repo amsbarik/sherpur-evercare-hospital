@@ -50,6 +50,12 @@
                     {{ form.slug | as_crispy_field }}
                 </div>
                 <div class="col">
+                    {{ form.qualification | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.gender | as_crispy_field }}
+                </div>
+                <div class="col">
                     {{ form.department | as_crispy_field }}
                 </div>
                 
@@ -95,10 +101,6 @@
                 </div>
             </div>
 
-
-            <div class="mt-3">
-                {{ form.qualification | as_crispy_field }}
-            </div>
             <div class="mt-3">
                 {{ form.bio | as_crispy_field }}
             </div>

@@ -22,7 +22,12 @@ class Specialization(BaseModel):
 
 
 class Doctor(BaseModel):
+    GENDER_CHOICES = (
+        ('male', 'Male'),
+        ('female', 'Female'),
+    )
     name = models.CharField(max_length=150)
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES, blank=True)
     slug = models.SlugField(unique=True, blank=True)
 
     department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name="doctors")

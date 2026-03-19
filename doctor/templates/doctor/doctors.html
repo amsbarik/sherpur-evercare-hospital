@@ -1,0 +1,287 @@
+{% extends 'layouts/master.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}    {% endblock title %}
+
+{% block content %}
+
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar overflow-visible">
+    <div class="container">
+        <div class="row align-items-center inner-banner">
+            <div class="col-md-12 col-12 text-center">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}"><i class="isax isax-home-15"></i> হোম পেইজ </a></li>
+                        <li class="breadcrumb-item active">ডাক্তারের তালিকা</li>
+                    </ol>
+                    <h5 class="breadcrumb-title mt-4">এখানে ডাক্তার খুঁজুন</h5>
+                </nav>
+            </div>
+        </div>
+        <div class="bg-primary-gradient rounded-pill doctors-search-box">
+            <div class="search-box-one rounded-pill p-1 pe-3">
+                <!-- <form action="#"> 
+                   
+                    <input type="text" class="form-control border-0 py-2 py-md-3 px-4 rounded-pill" placeholder="ডাক্তার খুঁজুন">
+
+                    <div class="form-search-btn">
+                        <button class="btn btn-primary d-inline-flex align-items-center rounded-pill" type="submit"><i class="isax isax-search-normal-15 me-2"></i>Search</button>
+                    </div>
+                </form> -->
+
+                <form method="GET" action="{% url 'doctors' %}">
+                    
+                    <!-- <input type="text" name="search_query" value="{{ query|default:'ডাক্তারের নাম, বিশেষীকরণ, পদবি দিয়ে খুঁজুন'}}" class="form-control border-0 py-2 py-md-3 px-4 rounded-pill" placeholder="ডাক্তারের নাম, বিশেষীকরণ, পদবি দিয়ে খুঁজুন"> -->
+
+
+                    <input 
+                        type="text" 
+                        name="search_query"
+                        class="form-control border-0 py-2 py-md-3 px-4 rounded-pill"
+                        placeholder="ডাক্তারের নাম, বিশেষীকরণ, পদবি দিয়ে খুঁজুন"
+                        {% if query %}value="{{ query }}"{% endif %}
+                    >
+
+                    <div class="form-search-btn">
+                        <button class="btn btn-primary d-inline-flex align-items-center rounded-pill" type="submit">
+                            <i class="isax isax-search-normal-15 me-2"></i>Search
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumb-bg">
+        <img src="{% static 'img/bg/breadcrumb-bg-01.png' %}" alt="img" class="breadcrumb-bg-01">
+        <img src="{% static 'img/bg/breadcrumb-bg-02.png' %}" alt="img" class="breadcrumb-bg-02">
+        <img src="{% static 'img/bg/breadcrumb-icon.png' %}" alt="img" class="breadcrumb-bg-03">
+        <img src="{% static 'img/bg/breadcrumb-icon.png' %}" alt="img" class="breadcrumb-bg-04">
+    </div>
+</div>
+<!-- /Breadcrumb -->
+
+
+
+<div class="content mt-5">
+    <div class="container">
+        <div class="row">
+
+            <!-- left filter  -->
+            <div class="col-xl-3">
+                <form action="" method="GET">
+                    <div class="card filter-lists">
+                        <div class="card-header">
+                            <div class="d-flex align-items-center filter-head justify-content-between">
+                                <h4>Filter</h4>
+                                <!-- <a href="{% url 'doctors' %}" class="text-secondary text-decoration-underline">Clear All</a> -->
+
+                                <a href="{% url 'doctors' %}" onclick="this.closest('form').reset();" class="text-secondary text-decoration-underline"> Clear All </a>
+                            </div>
+                            
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="accordion-item border-bottom">
+                                <div class="accordion-header" id="heading1">
+                                    <div class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-controls="collapse1" role="button">
+                                        <div class="d-flex align-items-center w-100">
+                                            <h5>Specialities</h5>
+                                            <div class="ms-auto">
+                                                <span><i class="fas fa-chevron-down"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="collapse1" class="accordion-collapse show" aria-labelledby="heading1">
+                                    <div class="accordion-body pt-3">
+
+                                        <!-- <div class="d-flex align-items-center justify-content-between mb-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="checkebox-sm2" checked="">
+                                                <label class="form-check-label" for="checkebox-sm2">
+                                                    Urology
+                                                </label>
+                                            </div>
+                                            <span class="filter-badge">21</span>
+                                        </div> -->
+
+
+                                        {% for s in all_specializations %}
+                                        <div class="d-flex align-items-center justify-content-between mb-2">
+                                            <div class="form-check">
+                                                <input 
+                                                    class="form-check-input"
+                                                    type="checkbox"
+                                                    name="specialization"
+                                                    value="{{ s.id }}"
+                                                    id="spec{{ s.id }}"
+                                                    {% if s.id|stringformat:"s" in selected_specializations %}checked{% endif %}
+                                                    onchange="this.form.submit()"
+                                                >
+                                                <label class="form-check-label" for="spec{{ s.id }}">
+                                                    {{ s.name }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+
+                                
+                                        <!-- <div class="view-content">
+                                            <div class="viewall-one">
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="checkebox-sm9">
+                                                        <label class="form-check-label" for="checkebox-sm9">
+                                                            Orthopedics
+                                                        </label>
+                                                    </div>
+                                                    <span class="filter-badge">21</span>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="checkebox-sm10">
+                                                        <label class="form-check-label" for="checkebox-sm10">
+                                                            Endocrinology
+                                                        </label>
+                                                    </div>
+                                                    <span class="filter-badge">21</span>
+                                                </div>
+                                            </div>
+                                            <div class="view-all">
+                                                <a href="javascript:void(0);" class="viewall-button-one text-secondary text-decoration-underline">View More</a>
+                                            </div>
+                                        </div> -->
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item border-bottom">
+                                <div class="accordion-header" id="heading2">
+                                    <div class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-controls="collapse2" role="button">
+                                        <div class="d-flex align-items-center w-100">
+                                            <h5>Gender</h5>
+                                            <div class="ms-auto">
+                                                <span><i class="fas fa-chevron-down"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="collapse2" class="accordion-collapse show" aria-labelledby="heading2">
+                                    <div class="accordion-body pt-3">
+                                        <!-- <div class="d-flex align-items-center justify-content-between mb-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="checkebox-sm11" checked="">
+                                                <label class="form-check-label" for="checkebox-sm11">
+                                                    Male
+                                                </label>
+                                            </div>
+                                            <span class="filter-badge">21</span>
+                                        </div> -->
+
+                                        <div class="form-check">
+                                            <input 
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="gender"
+                                                value="male"
+                                                id="gender_male"
+                                                {% if 'male' in selected_genders %}checked{% endif %}
+                                                onchange="this.form.submit()"
+                                            >
+                                            <label class="form-check-label" for="gender_male">
+                                                Male
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input 
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="gender"
+                                                value="female"
+                                                id="gender_female"
+                                                {% if 'female' in selected_genders %}checked{% endif %}
+                                                onchange="this.form.submit()"
+                                            >
+                                            <label class="form-check-label" for="gender_female">
+                                                Female
+                                            </label>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <!-- <button type="submit" class="btn btn-primary w-100 mt-3">
+                            Apply Filter
+                        </button> -->
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-xl-9">
+                
+                <!-- <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="mb-4">
+                            <h3 class="main-title">Showing <span class="text-secondary">450</span> Doctors For You</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center justify-content-end mb-4">
+                            <div class="doctor-filter-availability me-2">
+                                <p>Availability</p>
+                                <div class="status-toggle status-tog">
+                                    <input type="checkbox" id="status_6" class="check">
+                                    <label for="status_6" class="checktoggle">checkbox</label>
+                                </div>
+                            </div>
+                            <div class="dropdown header-dropdown me-2">
+                                <a class="dropdown-toggle sort-dropdown" data-bs-toggle="dropdown" href="javascript:void(0);" aria-expanded="false">
+                                    <span>Sort By</span>Price (Low to High)
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a href="javascript:void(0);" class="dropdown-item">
+                                        Price (Low to High)
+                                    </a>
+                                    <a href="javascript:void(0);" class="dropdown-item">
+                                        Price (High to Low)
+                                    </a>
+                                </div>
+                            </div>
+                            <a href="doctor-grid.html" class="btn btn-sm head-icon me-2"><i class="isax isax-grid-7"></i></a>
+                            <a href="search-2.html" class="btn btn-sm head-icon active me-2"><i class="isax isax-row-vertical"></i></a>
+                            <a href="map-list.html" class="btn btn-sm head-icon"><i class="isax isax-location"></i></a>
+                        </div>
+                    </div>
+                </div> -->
+
+
+                <div class="row">
+
+                    {% for doctor in doctors %}
+                    <div class="col-lg-12">
+                        {% include 'doctor/components/doctor_card.html' %}
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+{% endblock content %}

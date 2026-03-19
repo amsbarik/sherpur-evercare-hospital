@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.db.models import Prefetch
 
 from user_auth.views import is_superuser
 
@@ -23,7 +24,14 @@ def index(request):
     services = Service.objects.filter(is_active=True).order_by('order')[:11]
     blogs = Blog.objects.filter(is_active=True).order_by('order')[:3]
 
-    doctors = Doctor.objects.filter(is_active=True).order_by('order')[:8]
+    department_doctors = Department.objects.filter(is_active=True).order_by('order')[:7].prefetch_related(
+        Prefetch(
+            'doctors',
+            queryset=Doctor.objects.filter(is_active=True).order_by('order')[:1],
+            to_attr='limited_doctors'  # important
+        )
+    )
+    # doctors = Doctor.objects.filter(is_active=True).order_by('order')[:8]
 
     context = {
         'hero_overview': hero_overview,
@@ -31,10 +39,16 @@ def index(request):
         'departments': departments,
         'services': services,
         'blogs': blogs,
-        'doctors': doctors,
+        'department_doctors': department_doctors,
     }
 
     return render(request, 'core/index.html', context)
+
+
+
+
+
+
 
 
 

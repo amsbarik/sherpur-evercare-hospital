@@ -21,7 +21,7 @@
             <div class="d-flex align-items-center justify-content-between border-bottom p-3">
                 <a href="#" class="text-teal fw-medium fs-14">{{ doctor.department }}</a>
                 
-                    {% if doctor.is_available %}
+                    {% if doctor.is_available and doctor.schedules.all %}
                     <span class="badge bg-success-light d-inline-flex align-items-center">
                         <i class="isax isax-tick-circle5 text-success me-2"></i> Available
                     </span>
@@ -63,9 +63,10 @@
                                         {% endif %}
                                     {% endfor %} -->
                                 </p>
-                                <p class="d-flex align-items-center mb-0 fs-14">
-                                    <i class="fa-solid fa-hospital me-2"></i> {{ doctor.hospital }} <br>
-                                    <i class="isax isax-location me-2"></i> {{ doctor.hospital.name }}
+                                <p class="d-fle align-items-cente mb-0 fs-14">
+                                    <i class="fa-solid fa-hospital me-2"></i>{{ doctor.hospital }}
+                                    <i class="fa-solid fa-location-dot me-2 ms-4"></i>{{ doctor.hospital.address }}
+
                                     <!-- <a href="#" class="text-primary text-decoration-underline ms-2">Get Direction</a> -->
                                 </p>
                             </div>
@@ -81,6 +82,7 @@
                                 <!-- <p class="d-flex align-items-center mb-0 fs-14">
                                     <i class="isax isax-archive-14 text-dark me-2"></i> {{ doctor.experience_years }} বছরের অভিজ্ঞতা
                                 </p> -->
+                                <h5 class="mb-3" style="font-size: 15px;">ডাক্তারের সময়সূচী</h5>
                                 {% for schedule in doctor.schedules.all %}
                                     <p>
                                         {{ schedule.get_day_of_week_display }}:
@@ -97,9 +99,9 @@
                     <div class="d-flex align-items-center flex-wrap row-gap-3">
                         <div class="me-3">
                             <p class="mb-1">Consultation Fees</p>
-                            <h3 class="text-orange">{{ doctor.consultation_fee }} টাকা </h3>
+                            <h3 class="text-orange">{{ doctor.consultation_fee | floatformat:0 }} টাকা </h3>
                         </div>
-                        <p class="mb-0">Next available at <br>10:00 AM - 15 Oct, Tue</p>
+                        <!-- <p class="mb-0">Next available at <br>10:00 AM - 15 Oct, Tue</p> -->
                     </div>
                     <a href="booking.html" class="btn btn-md btn-primary-gradient d-inline-flex align-items-center rounded-pill">
                         <i class="isax isax-calendar-1 me-2"></i>
