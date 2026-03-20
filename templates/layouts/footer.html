@@ -12,7 +12,9 @@
 							<!-- Footer Widget -->
 							<div class="footer-widget footer-about">
 								<div class="footer-logo">
-									<img src="assets/img/logo-02.svg" alt="logo">
+									{% if site_setting.footer_logo %}
+									<img src="{{ site_setting.footer_logo.url }}" class="footer-logo" alt="logo">
+									{% endif %}
 								</div>
 								<div class="footer-about-content">
 									<p>We are a dedicated Eye Care and Vision Health Center committed to providing advanced, Diagnostic Treatments.</p>

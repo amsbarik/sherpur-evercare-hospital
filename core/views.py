@@ -9,8 +9,8 @@ from about_us.models import AboutUs
 from blog.models import Blog
 from doctor.models import Doctor
 
-from .models import HeroOverview
-from .forms import HeroOverviewForm
+from .models import HeroOverview, SiteSetting
+from .forms import HeroOverviewForm, SiteSettingForm
 
 
 
@@ -72,6 +72,24 @@ def hero_overview_form(request):
 
 
     return render(request, "core/admin/hero_overview_form.html", {"form": form})
+
+
+
+@login_required
+@user_passes_test(is_superuser)
+def site_setting_form(request):
+    setting = SiteSetting.objects.first()
+
+    if request.method == "POST":
+        form = SiteSettingForm(request.POST, request.FILES, instance=setting)
+        if form.is_valid():
+            form.save()
+            return redirect("site_setting_form")
+    else:
+        form = SiteSettingForm(instance=setting)
+
+
+    return render(request, "core/admin/site_setting_form.html", {"form": form})
 
 
 

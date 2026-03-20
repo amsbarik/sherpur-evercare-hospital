@@ -23,26 +23,16 @@
         </div>
         <div class="bg-primary-gradient rounded-pill doctors-search-box">
             <div class="search-box-one rounded-pill p-1 pe-3">
-                <!-- <form action="#"> 
-                   
-                    <input type="text" class="form-control border-0 py-2 py-md-3 px-4 rounded-pill" placeholder="ডাক্তার খুঁজুন">
-
-                    <div class="form-search-btn">
-                        <button class="btn btn-primary d-inline-flex align-items-center rounded-pill" type="submit"><i class="isax isax-search-normal-15 me-2"></i>Search</button>
-                    </div>
-                </form> -->
-
+            
                 <form method="GET" action="{% url 'doctors' %}">
                     
-                    <!-- <input type="text" name="search_query" value="{{ query|default:'ডাক্তারের নাম, বিশেষীকরণ, পদবি দিয়ে খুঁজুন'}}" class="form-control border-0 py-2 py-md-3 px-4 rounded-pill" placeholder="ডাক্তারের নাম, বিশেষীকরণ, পদবি দিয়ে খুঁজুন"> -->
-
-
                     <input 
                         type="text" 
                         name="search_query"
                         class="form-control border-0 py-2 py-md-3 px-4 rounded-pill"
                         placeholder="ডাক্তারের নাম, বিশেষীকরণ, পদবি দিয়ে খুঁজুন"
                         {% if query %}value="{{ query }}"{% endif %}
+                        
                     >
 
                     <div class="form-search-btn">
@@ -71,15 +61,13 @@
         <div class="row">
 
             <!-- left filter  -->
-            <div class="col-xl-3">
+            <div class="col-12">
                 <form action="" method="GET">
                     <div class="card filter-lists">
                         <div class="card-header">
                             <div class="d-flex align-items-center filter-head justify-content-between">
-                                <h4>Filter</h4>
-                                <!-- <a href="{% url 'doctors' %}" class="text-secondary text-decoration-underline">Clear All</a> -->
-
-                                <a href="{% url 'doctors' %}" onclick="this.closest('form').reset();" class="text-secondary text-decoration-underline"> Clear All </a>
+                                <h4>বিশেষজ্ঞ ডাক্তারগণকে বাছাই করুন</h4>
+                                <a href="{% url 'doctors' %}" onclick="this.closest('form').reset();" class="text-secondary text-decoration-underline"> সব ডাক্তার দেখুন </a>
                             </div>
                             
                         </div>
@@ -88,29 +76,18 @@
                                 <div class="accordion-header" id="heading1">
                                     <div class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-controls="collapse1" role="button">
                                         <div class="d-flex align-items-center w-100">
-                                            <h5>Specialities</h5>
+                                            <!-- <h5>বিশেষজ্ঞ ডাক্তার</h5> -->
                                             <div class="ms-auto">
-                                                <span><i class="fas fa-chevron-down"></i></span>
+                                                <!-- <span><i class="fas fa-chevron-down"></i></span> -->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div id="collapse1" class="accordion-collapse show" aria-labelledby="heading1">
-                                    <div class="accordion-body pt-3">
-
-                                        <!-- <div class="d-flex align-items-center justify-content-between mb-2">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="checkebox-sm2" checked="">
-                                                <label class="form-check-label" for="checkebox-sm2">
-                                                    Urology
-                                                </label>
-                                            </div>
-                                            <span class="filter-badge">21</span>
-                                        </div> -->
-
+                                    <div class="accordion-body d-flex pt-3">
 
                                         {% for s in all_specializations %}
-                                        <div class="d-flex align-items-center justify-content-between mb-2">
+                                        <div class="d-flex align-items-center justify-content-between mb-2 me-4">
                                             <div class="form-check">
                                                 <input 
                                                     class="form-check-input"
@@ -128,34 +105,6 @@
                                         </div>
                                         {% endfor %}
 
-                                
-                                        <!-- <div class="view-content">
-                                            <div class="viewall-one">
-                                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="checkebox-sm9">
-                                                        <label class="form-check-label" for="checkebox-sm9">
-                                                            Orthopedics
-                                                        </label>
-                                                    </div>
-                                                    <span class="filter-badge">21</span>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="checkebox-sm10">
-                                                        <label class="form-check-label" for="checkebox-sm10">
-                                                            Endocrinology
-                                                        </label>
-                                                    </div>
-                                                    <span class="filter-badge">21</span>
-                                                </div>
-                                            </div>
-                                            <div class="view-all">
-                                                <a href="javascript:void(0);" class="viewall-button-one text-secondary text-decoration-underline">View More</a>
-                                            </div>
-                                        </div> -->
-
-
                                     </div>
                                 </div>
                             </div>
@@ -164,26 +113,17 @@
                                 <div class="accordion-header" id="heading2">
                                     <div class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-controls="collapse2" role="button">
                                         <div class="d-flex align-items-center w-100">
-                                            <h5>Gender</h5>
+                                            <!-- <h5>লিঙ্গ</h5> -->
                                             <div class="ms-auto">
-                                                <span><i class="fas fa-chevron-down"></i></span>
+                                                <!-- <span><i class="fas fa-chevron-down"></i></span> -->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div id="collapse2" class="accordion-collapse show" aria-labelledby="heading2">
-                                    <div class="accordion-body pt-3">
-                                        <!-- <div class="d-flex align-items-center justify-content-between mb-2">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="checkebox-sm11" checked="">
-                                                <label class="form-check-label" for="checkebox-sm11">
-                                                    Male
-                                                </label>
-                                            </div>
-                                            <span class="filter-badge">21</span>
-                                        </div> -->
-
-                                        <div class="form-check">
+                                    <div class="accordion-body d-flex pt-3">
+                                      
+                                        <div class="form-check me-4">
                                             <input 
                                                 class="form-check-input"
                                                 type="checkbox"
@@ -194,7 +134,7 @@
                                                 onchange="this.form.submit()"
                                             >
                                             <label class="form-check-label" for="gender_male">
-                                                Male
+                                                পুরুষ ডাক্তার
                                             </label>
                                         </div>
 
@@ -209,7 +149,7 @@
                                                 onchange="this.form.submit()"
                                             >
                                             <label class="form-check-label" for="gender_female">
-                                                Female
+                                                মহিলা ডাক্তার
                                             </label>
                                         </div>
                                         
@@ -230,7 +170,7 @@
                 </form>
             </div>
 
-            <div class="col-xl-9">
+            <div class="col-12">
                 
                 <!-- <div class="row align-items-center">
                     <div class="col-md-6">

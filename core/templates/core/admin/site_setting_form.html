@@ -1,0 +1,134 @@
+{% extends 'admin/layouts/master.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Site Setting Form {% endblock title %}
+
+
+{% block content %}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Site Setting Form</h6>
+    <ul class="d-flex align-items-center gap-2">
+        <li class="fw-medium">
+            <a href="{% url 'dashboard' %}" class="d-flex align-items-center gap-1 hover-text-primary">
+                <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+                Dashboard
+            </a>
+        </li>
+        <li>-</li>
+        <li class="fw-medium">Site Setting</li>
+    </ul>
+</div>
+
+
+<!-- form start  -->
+<form action="" method="POST" class="form mb-5 " enctype="multipart/form-data"> {% csrf_token %}
+    <div class="card">
+        <!-- <div class="card-header" style="padding: 36px;">
+            <h6 class="card-title mb-0">Create or Update Form</h6>
+        </div> -->
+        
+        <div class="card-body" style="padding: 36px;">
+            <h6>Brand Logo & favicon</h6>
+            <hr style="margin-bottom: 24px;">
+            <div class="row row-cols-1 row-cols-md-">
+                <div class="col">
+                    {{ form.header_logo | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.footer_logo | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.favicon | as_crispy_field }}
+                </div>
+            </div>
+
+            <h6 style="margin-top: 24px;">Contact information</h6>
+            <hr style="margin-bottom: 24px;">
+            <div class="row row-cols-1 row-cols-md-2">
+                <div class="col">
+                    {{ form.mobile | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.email | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.location | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.working_hour | as_crispy_field }}
+                </div>
+            </div>
+
+
+            <h6 style="margin-top: 24px;">Social links</h6>
+            <hr style="margin-bottom: 24px;">
+            <div class="row row-cols-1 row-cols-md-2">
+                <div class="col">
+                    {{ form.facebook_url | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.instagram_url | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.tiktok_url | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.linkedin_url | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.twiter_url | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.youtube_url | as_crispy_field }}
+                </div>
+            </div>
+
+            <h6 style="margin-top: 24px;">Meta info for SEO</h6>
+            <hr style="margin-bottom: 24px;">
+            <div class="row row-cols-1 row-cols-md-">
+                <div class="col">
+                    {{ form.meta_title | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.meta_keywords | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.meta_description | as_crispy_field }}
+                </div>
+            </div>
+            
+            <div class="mt-5">
+                <button type="submit" class="btn btn-primary mt-4 me-3  px-5">Submit</button>
+                <a href="{% url 'dashboard' %}" class="btn btn-dark mt-4  px-5"> Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

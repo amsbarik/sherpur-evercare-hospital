@@ -89,7 +89,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
 
                 # custom 
-                # 'core.context_processors.site_data',
+                'core.context_processors.site_data',
             ],
         },
     },

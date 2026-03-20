@@ -53,8 +53,8 @@ class SiteSetting(models.Model):
     # Contact info
     mobile = models.CharField(max_length=20)
     email = models.EmailField()
-    location = models.CharField(max_length=255)
-    working_hour = models.CharField(max_length=120)
+    location = models.CharField(max_length=255, blank=True)
+    working_hour = models.CharField(max_length=120, blank=True)
 
     # Social links
     facebook_url = models.URLField(blank=True)
@@ -66,9 +66,10 @@ class SiteSetting(models.Model):
 
     # SEO Meta
     meta_title = models.CharField(max_length=255)
-    meta_description = models.TextField()
+    meta_description = models.TextField(blank=True)
     meta_keywords = models.CharField(
         max_length=255,
+        blank=True,
         help_text="Comma-separated keywords (e.g. hospital, doctor)"
     )
 

@@ -42,7 +42,7 @@
         </li>
 
         <!-- section  -->
-        <li class="sidebar-menu-group-title">Blogs Manage</li>
+        <!-- <li class="sidebar-menu-group-title">Blogs Manage</li> -->
         <li>
             <a href="{% url 'blog_category_list' %}">
             <i class="ri-news-line text-xl me-14 d-flex w-auto"></i>
@@ -57,7 +57,7 @@
         </li>
 
         <!-- section  -->
-        <li class="sidebar-menu-group-title">Doctors & Hospital</li>
+        <!-- <li class="sidebar-menu-group-title">Doctors & Hospital</li> -->
 
         <!-- dropdown submenu  -->
         <li class="dropdown">
@@ -75,7 +75,7 @@
         </li>
 
         <!-- section  -->
-        <li class="sidebar-menu-group-title">Settings</li>
+        <!-- <li class="sidebar-menu-group-title">Settings</li> -->
 
         <!-- dropdown submenu  -->
         <li class="dropdown">
@@ -99,7 +99,7 @@
         <!-- bottom  -->
         <div style="position: fixed; bottom: 24px;">
             <li>
-                <a href="#" target="_blank">
+                <a href="{% url 'site_setting_form' %}" target="_blank">
                 <iconify-icon icon="icon-park-outline:setting-two" class="menu-icon"></iconify-icon>
                 <span>Settings</span>
                 </a>

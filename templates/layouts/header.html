@@ -8,8 +8,10 @@
 							<a id="mobile_btn" href="#">
 								<i class="fa-solid fa-bars"></i>
 							</a>
-							<a href="index.html" class="navbar-brand logo">
-								<img src="assets/img/logo.svg" class="img-fluid" alt="Logo">
+							<a href="{% url 'index' %}" class="navbar-brand logo">
+								{% if site_setting.header_logo %}
+								<img src="{{ site_setting.header_logo.url }}" class="header-logo" alt="Logo">
+								{% endif %}
 							</a>
 						</div>
 						<div class="header-menu">

@@ -1,0 +1,11 @@
+
+.header-logo{
+    width: 60px;
+    height: auto;
+    object-fit: contain;
+}
+.footer-logo{
+    width: 140px;
+    height: auto;
+    object-fit: contain;
+}
