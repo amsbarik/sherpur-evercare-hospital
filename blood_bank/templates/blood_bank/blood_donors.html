@@ -1,0 +1,74 @@
+{% extends 'layouts/master.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %} রক্তদাতা {% endblock title %}
+
+{% block content %}
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar page-margin-top">
+    <div class="container">
+        <div class="row align-items-center inner-banner">
+            <div class="col-md-12 col-12 text-center">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}"><i class="isax isax-home-15 me-2"></i>হোম পেইজ</a></li>
+                        <li class="breadcrumb-item active">রক্তদাতা</li>
+                    </ol>
+                    <h2 class="breadcrumb-title mt-4">রক্তদাতা </h2>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumb-bg">
+        <img src="{% static 'img/bg/breadcrumb-bg-01.png' %}" alt="img" class="breadcrumb-bg-01">
+        <img src="{% static 'img/bg/breadcrumb-bg-02.png' %}" alt="img" class="breadcrumb-bg-02">
+        <img src="{% static 'img/bg/breadcrumb-icon.png' %}" alt="img" class="breadcrumb-bg-03">
+        <img src="{% static 'img/bg/breadcrumb-icon.png' %}" alt="img" class="breadcrumb-bg-04">
+    </div>
+</div>
+<!-- /Breadcrumb -->
+
+
+<!-- Service Section -->
+<section class="section service-section pt-4 pt-lg-5">
+    <div class="container">
+
+        <a href="#" class="text-end text-primary d-block mb-4">Get Appointment</a>
+
+        <div class="row g-4">
+
+            <!-- Service Item -->
+            <div class="col-xl-2 col-lg-4 col-sm-6 d-flex">
+                <div class="services-item-two bg-primary-transparent w-100 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1s">
+                    <div class="service-icon">
+                        <img src="{% static 'img/icons/booking.svg' %}" alt="booking" class="img-fluid">
+                    </div>
+                    <h3><a href="booking.html">Book Appointment</a></h3>
+                </div>
+            </div>
+            <!-- Service Item End -->
+
+            <!-- Service Item -->
+            {% for service in services %}
+            <div class="col-xl-2 col-lg-4 col-sm-6 d-flex">
+                <div class="services-item-two w-100 wow fadeInUp {% cycle 'bg-success-transparent' 'bg-pink-transparent' 'bg-gray-transparent' 'bg-secondary-transparent' 'bg-orange-transparent' 'bg-primary-transparent' %}" data-wow-delay="0.2s" data-wow-duration="2s">
+                    {% if service.service_icon %}
+                    <div class="service-icon">
+                        <img src="{{ service.service_icon.url }}" alt="lab" class="img-fluid">
+                    </div>
+                    {% endif %}
+                    <h3><a href="#">Lab Testing Services</a></h3>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- Service Item End -->
+
+        </div>
+
+    </div>
+</section>
+<!-- Service Section End -->
+
+{% endblock content %}

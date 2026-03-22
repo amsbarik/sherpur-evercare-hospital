@@ -3,7 +3,7 @@ from .import views
 
 
 urlpatterns = [
-    # path('services/', views.services, name='services'),
+    path('about-us/', views.about_us, name='about_us'),
 
 
     # admin panel urls 

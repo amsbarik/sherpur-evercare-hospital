@@ -1,0 +1,75 @@
+{% extends 'layouts/master.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %} Our Departments {% endblock title %}
+
+{% block content %}
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar page-margin-top">
+    <div class="container">
+        <div class="row align-items-center inner-banner">
+            <div class="col-md-12 col-12 text-center">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}"><i class="isax isax-home-15 me-2"></i>হোম পেইজ
+</a></li>
+                        <li class="breadcrumb-item active">বিভাগ</li>
+                    </ol>
+                    <h2 class="breadcrumb-title mt-4">বিভাগ সমূহ</h2>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumb-bg">
+        <img src="{% static 'img/bg/breadcrumb-bg-01.png' %}" alt="img" class="breadcrumb-bg-01">
+        <img src="{% static 'img/bg/breadcrumb-bg-02.png' %}" alt="img" class="breadcrumb-bg-02">
+        <img src="{% static 'img/bg/breadcrumb-icon.png' %}" alt="img" class="breadcrumb-bg-03">
+        <img src="{% static 'img/bg/breadcrumb-icon.png' %}" alt="img" class="breadcrumb-bg-04">
+    </div>
+</div>
+<!-- /Breadcrumb -->
+
+
+<!-- Department Section -->
+		<section class="section speciality-section-two">
+			<div class="container">
+				<!-- <div class="section-header section-header-two">
+					<div class="section-sub-title"><img src="{% static 'img/icons/section-icon.svg' %}" alt="icon">বিভাগ এবং বিশেষত্ব</div>
+					<h2 class="section-title mb-0 mt-4">প্রতিটি প্রয়োজনে  <span>চিকিৎসা সহায়তা</span></h2>
+				</div> -->
+
+                <a href="#" class="text-end text-primary d-block mb-4">Get Appointment</a>
+                
+				<div class="row">
+						{% for department in departments %}
+						<div class="col-lg-3 col-sm-6">
+							<div class="card speciality-item">
+                                <div class="card-body p-3">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+											{% if department.department_icon %}
+                                            <a href="doctor-grid.html" class="speciality-icon">
+                                                <img src="{{ department.department_icon.url }}" alt="{{ department.name }} icon">
+                                            </a>
+											{% endif %}
+                                            <div class="ms-3">
+                                                <h6 class="mb-1"><a href="doctor-grid.html">{{ department.name }}</a></h6>
+                                                <p class="fs-14 mb-0">151 Doctors</p>
+                                            </div>
+                                        </div>
+                                        <a href="doctor-grid.html" class="link-icon"><i class="isax isax-arrow-right-3"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+						</div>
+						{% endfor %}
+
+					</div>
+                
+			</div>
+		</section>
+		<!-- Department Section End -->
+
+{% endblock content %}

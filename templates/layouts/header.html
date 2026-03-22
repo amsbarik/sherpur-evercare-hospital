@@ -1,7 +1,7 @@
 {% load static %}
 
 <!-- Header -->
-<header class="header header-default inner-header">
+<header class="header header-default inner-header position-fixed z-3 w-100 top-0">
 	<div class="container">
 		<nav class="navbar navbar-expand-lg header-nav">
 			<div class="navbar-header">
@@ -219,15 +219,15 @@
 							</ul>
 						</li> -->
 
-						<li class="has-submenu"><a href="{% url 'index' %}" class="main-menu">Home</a></li>
-						<li class="has-submenu"><a href="{% url 'doctors' %}" class="main-menu">Doctors</a></li>
-						<li class="has-submenu"><a href="#" class="main-menu">Appointment</a></li>
-						<li class="has-submenu"><a href="#" class="main-menu">Departments</a></li>
-						<li class="has-submenu"><a href="#" class="main-menu">Services</a></li>
-						<li class="has-submenu"><a href="#" class="main-menu">Blood Bank</a></li>
-						<li class="has-submenu"><a href="#" class="main-menu">About Us</a></li>
-						<li class="has-submenu"><a href="#" class="main-menu">Blogs</a></li>
-						<li class="has-submenu"><a href="#" class="main-menu">Contact</a></li>
+						<li class="has-submenu"><a href="{% url 'index' %}" class="main-menu {% if request.resolver_match.url_name == 'index' %}active{% endif %}">Home</a></li>
+						<li class="has-submenu"><a href="{% url 'about_us' %}" class="main-menu {% if request.resolver_match.url_name == 'about_us' %}active{% endif %}">About Us</a></li>
+						<li class="has-submenu"><a href="{% url 'doctors' %}" class="main-menu {% if request.resolver_match.url_name == 'doctors' %}active{% endif %}">Doctors</a></li>
+						<li class="has-submenu"><a href="{% url 'appointment' %}" class="main-menu {% if request.resolver_match.url_name == 'appointment' %}active{% endif %}">Appointment</a></li>
+						<li class="has-submenu"><a href="{% url 'departments' %}" class="main-menu {% if request.resolver_match.url_name == 'departments' %}active{% endif %}">Departments</a></li>
+						<li class="has-submenu"><a href="{% url 'services' %}" class="main-menu {% if request.resolver_match.url_name == 'services' %}active{% endif %}">Services</a></li>
+						<li class="has-submenu"><a href="{% url 'blood_donors' %}" class="main-menu {% if request.resolver_match.url_name == 'blood_donors' %}active{% endif %}">Blood Bank</a></li>
+						<li class="has-submenu"><a href="{% url 'blogs' %}" class="main-menu {% if request.resolver_match.url_name == 'blogs' %}active{% endif %}">Blogs</a></li>
+						<li class="has-submenu"><a href="{% url 'contact_us' %}" class="main-menu {% if request.resolver_match.url_name == 'contact_us' %}active{% endif %}">Contact</a></li>
 
 					</ul>
 					<div class="header-items">

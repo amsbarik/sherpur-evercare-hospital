@@ -8,17 +8,18 @@
             <img class="img-fluid" src="{{ blog.cover_photo.url }}" alt="blog">
         </a>
         {% endif %}
+        <span class="badge badge-primary text-white category-slug">{{ blog.category }}</span>
         
     </div>
     <div class="blog-content">
-        <div class="blog-user-info">
+        <div class="blog-user-info mb-3">
             <!-- <div class="blog-user">
                 <a href="#" class="avatar avatar-md">
                     <img src="assets/img/patients/patient12.jpg" class="img-fluid rounded-circle" alt="user">
                 </a>
                 <a href="#">Grace Morgan</a>
             </div> -->
-            <a href="#" class="badg">{{ blog.category }} </a>
+            <!-- <a href="#" class="badg">{{ blog.category }} </a> -->
             <p class="date">{{ blog.created_at |abbreviate_month }}</p>
         </div>
         <h3 class="custom-title"><a href="blog-details.html">{{ blog.title| truncatechars:34 }} </a></h3>

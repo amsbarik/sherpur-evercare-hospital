@@ -9,7 +9,16 @@ from .forms import ServiceForm, DepartmentForm
 
 # Create your views here.
 
+def services(request):
+    services = Service.objects.filter(is_active=True).order_by('order')
 
+    return render(request, 'service/services.html', {'services': services})
+
+
+def departments(request):
+    departments = Department.objects.filter(is_active=True).order_by('order')
+
+    return render(request, 'service/departments.html', {'departments': departments})
 
 
 

@@ -4,7 +4,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # path('blogs/', views.blogs, name='blogs' ),
+    path('appointment/form', views.appointment, name='appointment' ),
     # path('blog-details/<int:pk>/', views.blog_details, name='blog_details' ),
 
     #blogs urls | admin panel
