@@ -4,15 +4,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap");
 :root {
-  --primary: #316dff;
-  --secondary: #02bfff;
+  /* --primary: #316dff; */
+  --primary: #0AA79C;
+  --secondary: #283B8E ;
+  /* --secondary: #02bfff; */
   --light: #f4f6f8;
   --dark: #000103;
   --dark-hover: #252a30;
   --white: #fff;
   --success: #04bd6c;
   --info: #2F80ED;
-  --danger: #ff0000;
+  --danger: #EB1F27;
   --orange: #e04f16;
   --pink: #dd2590;
   --purple: #6938ef;

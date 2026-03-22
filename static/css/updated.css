@@ -9,3 +9,9 @@
     height: auto;
     object-fit: contain;
 }
+
+
+.md-message .name-box{
+    border-left: 16px solid #0AA79C;
+    padding-left: 16px;
+}

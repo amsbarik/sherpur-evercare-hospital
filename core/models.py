@@ -43,6 +43,19 @@ class FAQ(BaseModel):
 #         return self.question
     
 
+class Message(models.Model):
+    heading = models.CharField(max_length=150)
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)
+    message_from = models.CharField(max_length=100)
+    photo = models.ImageField(upload_to='message/')
+    message = models.TextField()
+    message_optional = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.name + ' - ' + self.designation
+    
+
 
 class SiteSetting(models.Model):
     # Branding

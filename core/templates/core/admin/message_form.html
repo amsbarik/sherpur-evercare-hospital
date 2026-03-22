@@ -1,0 +1,91 @@
+{% extends 'admin/layouts/master.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Message Form {% endblock title %}
+
+
+{% block content %}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Message Form</h6>
+    <ul class="d-flex align-items-center gap-2">
+        <li class="fw-medium">
+            <a href="{% url 'dashboard' %}" class="d-flex align-items-center gap-1 hover-text-primary">
+                <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+                Dashboard
+            </a>
+        </li>
+        <li>-</li>
+        <li class="fw-medium">Message</li>
+    </ul>
+</div>
+
+<!-- form start  -->
+<form action="" method="POST" class="form mb-5 " enctype="multipart/form-data"> {% csrf_token %}
+    <div class="card">
+        <!-- <div class="card-header" style="padding: 36px;">
+            <h6 class="card-title mb-0">Create or Update Form</h6>
+        </div> -->
+        
+        <div class="card-body" style="padding: 36px;">
+            <div class="row row-cols-1 row-cols-md-">
+                <div class="col">
+                    {{ form.heading | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.name | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.designation | as_crispy_field }}
+                </div>
+            
+                <div class="col">
+                    {{ form.photo | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.message_from | as_crispy_field }}
+                </div>
+                <div class="col">
+                    {{ form.message | as_crispy_field }}
+                </div>
+            </div>
+
+            <div>
+                {{ form.message_optional | as_crispy_field }}
+            </div>
+           
+            
+            <div class="mt-5">
+                <button type="submit" class="btn btn-primary mt-4 me-3  px-5">Submit</button>
+                <a href="{% url 'dashboard' %}" class="btn btn-dark mt-4  px-5"> Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

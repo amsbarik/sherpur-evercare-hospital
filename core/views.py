@@ -9,8 +9,8 @@ from about_us.models import AboutUs
 from blog.models import Blog
 from doctor.models import Doctor
 
-from .models import HeroOverview, SiteSetting
-from .forms import HeroOverviewForm, SiteSettingForm
+from .models import HeroOverview, SiteSetting, Message
+from .forms import HeroOverviewForm, SiteSettingForm, MessageForm
 
 
 
@@ -19,6 +19,7 @@ from .forms import HeroOverviewForm, SiteSettingForm
 def index(request):
 
     hero_overview = HeroOverview.objects.first()
+    message = Message.objects.first()
     about_us = AboutUs.objects.first()
     departments = Department.objects.filter(is_active=True).order_by('order')[:12]
     services = Service.objects.filter(is_active=True).order_by('order')[:11]
@@ -35,6 +36,7 @@ def index(request):
 
     context = {
         'hero_overview': hero_overview,
+        'message': message,
         'about_us': about_us,
         'departments': departments,
         'services': services,
@@ -72,6 +74,24 @@ def hero_overview_form(request):
 
 
     return render(request, "core/admin/hero_overview_form.html", {"form": form})
+
+
+
+@login_required
+@user_passes_test(is_superuser)
+def message_form(request):
+    message = Message.objects.first()
+
+    if request.method == "POST":
+        form = MessageForm(request.POST, request.FILES, instance=message)
+        if form.is_valid():
+            form.save()
+            return redirect("message_form")
+    else:
+        form = MessageForm(instance=message)
+
+
+    return render(request, "core/admin/message_form.html", {"form": form})
 
 
 

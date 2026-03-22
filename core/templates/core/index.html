@@ -138,7 +138,42 @@
 		</section>
 		<!-- Service Section End -->
 
-		<!-- About Section -->
+		<!-- md message -->
+		<section class="section md-message about-section-two">
+			<div class="container">
+				<div class="row g-4">
+					<div class="col-md-3">
+						{% if message.photo %}
+						<img src="{{ message.photo.url }}" width="100%" height="auto" alt="{{ message.name }} photo">
+						{% endif %}
+						<div class="mt-4 name-box">
+							<h5 class="mb-2">{{ message.name }}</h5>
+							<p>{{ message.designation }}</p>
+						</div>
+					</div>
+
+					<div class="col-md-9">
+						<h3>{{ message.heading }}</h3>
+						<p class="mt-4 mt-md-5 mb-1">Message From</p>
+						<h5 class="mb-md-4 mb-3">{{ message.message_from }}</h5>
+						<p>{{ message.message }}</p>
+						<p class="mb-4">{{ message.message_optional }}</p>
+
+						<a href="#" class="text-primary text-decoration-underline">Know more</a>
+						<!-- <a href="about-us.html" class="btn btn-md btn-primary">Know More<i class="isax isax-arrow-right-34 ms-2"></i></a> -->
+					</div>
+
+				</div>
+			</div>
+			<img src="{% static 'img/bg/about-bg.png' %}" alt="icon" class="img-fluid about-bg-01">
+		</section>
+
+
+
+		<br>
+		<br>
+		<br>
+		<br>
 		<section class="section about-section-two">
 			<div class="container">
 				<div class="row align-items-center">
