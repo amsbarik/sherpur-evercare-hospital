@@ -259,8 +259,9 @@
   const colorPickerButtons = document.querySelectorAll(".color-picker-btn");
 
   const colors = {
-    blue: "#2563eb",
-    red: "#dc2626",
+    // blue: "#2563eb",
+    blue: "#0AA79C",
+    red: "#EB1F27",
     green: "#16a34a",
     yellow: "#ff9f29",
     cyan: "#00b8f2",
