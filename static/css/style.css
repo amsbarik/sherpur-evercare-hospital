@@ -12021,9 +12021,10 @@ select:focus {
 .footer-two .footer-top .footer-widget.footer-about .social-icon ul li a {
   color: #fff;
   position: relative;
-  padding-right: 18px;
+  padding-right: 2px;
+  font-size: 20px;
 }
-.footer-two .footer-top .footer-widget.footer-about .social-icon ul li a::before {
+/* .footer-two .footer-top .footer-widget.footer-about .social-icon ul li a::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -12035,7 +12036,7 @@ select:focus {
   height: 6px;
   border-radius: 50%;
   background: var(--primary-gradient);
-}
+} */
 .footer-two .footer-top .footer-widget.footer-about .social-icon ul li a:hover {
   background: var(--primary-gradient);
   -webkit-background-clip: text;

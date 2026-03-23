@@ -1,16 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Prefetch
+from django.contrib import messages
 
 from user_auth.views import is_superuser
-
 from service.models import Service, Department
 from about_us.models import AboutUs
 from blog.models import Blog
 from doctor.models import Doctor
 
-from .models import HeroOverview, SiteSetting, Message
+from .models import HeroOverview, SiteSetting, Message, Subscribe
 from .forms import HeroOverviewForm, SiteSettingForm, MessageForm
+
+
 
 
 
@@ -51,6 +53,23 @@ def index(request):
 
 
 
+
+def subscribe(request):
+    if request.method == 'POST':
+        email = request.POST.get('subscribe-email', '').strip()
+
+        if email:
+            obj, created = Subscribe.objects.get_or_create(email=email)
+
+            if created:
+                messages.success(request, "সফলভাবে সাবস্ক্রাইব করা হয়েছে!")
+            else:
+                messages.info(request, "আপনি ইতিমধ্যেই সাবস্ক্রাইব করেছেন।")
+
+        else:
+            messages.error(request, "অনুগ্রহ করে একটি বৈধ ইমেল প্রবেশ করান।")
+
+    return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
 
@@ -112,4 +131,8 @@ def site_setting_form(request):
     return render(request, "core/admin/site_setting_form.html", {"form": form})
 
 
-
+@login_required
+@user_passes_test(is_superuser)
+def subscribe_list(request):
+    subscribers = Subscribe.objects.order_by('created_at').all()
+    return render(request, 'core/admin/subscribe_list.html', {'subscribers': subscribers})

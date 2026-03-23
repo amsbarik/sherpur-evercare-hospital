@@ -7,18 +7,18 @@
 {% block content %}
 
 		<!-- Banner -->
-		<section class="banner-section-two page-margin-top" style="background: radial-gradient(84.63% 354.2% at 71.21% 68.89%, #4EDEC1 0%, #316DFF 41.35%, #316DFF 80.92%, #31436D 99.99%, #FFFFFF 100%);;">
+		<section class="banner-section-two page-margin-top" style="background: radial-gradient(84.63% 354.2% at 71.21% 68.89%, #4EDEC1 0%, #283B8E 41.35%, #0AA79C 80.92%, #31436D 99.99%, #FFFFFF 100%);;">
 			<div class="container">
 				<div class="row align-items-end">
 					<div class="col-xl-6">
 						<div class="banner-content wow fadeInUp" data-wow-duration="1s">
-							<!-- <div class="banner-badge">
+							<div class="banner-badge">
 								<span>Advanced Technology</span> 
 								<p>Comprehensive diagnosis by top specialists.</p>
-							</div> -->
+							</div>
 							<h1>{{ hero_overview.heading }} </h1>
 							<p>{{ hero_overview.short_description }}</p>
-							<a href="#" class="btn btn-md btn-white"><i class="isax isax-lock me-2"></i>Book an Appointment</a>
+							<a href="{% url 'appointment' %}" class="btn btn-md btn-white"><i class="isax isax-lock me-2"></i>Book an Appointment</a>
 						</div>
 					</div>
 					<div class="col-xl-6">
@@ -102,7 +102,7 @@
 		<section class="section service-section pt-4 pt-lg-5">
 			<div class="container">
 
-				<a href="#" class="text-end text-primary d-block mb-4">See more</a>
+				<a href="{% url 'services' %}" class="text-end text-primary d-block mb-4">See more</a>
 
 				<div class="row g-4">
 
@@ -159,7 +159,7 @@
 						<p>{{ message.message }}</p>
 						<p class="mb-4">{{ message.message_optional }}</p>
 
-						<a href="#" class="text-primary text-decoration-underline">Know more</a>
+						<a href="{% url 'about_us' %}" class="text-primary text-decoration-underline">Know more</a>
 						<!-- <a href="about-us.html" class="btn btn-md btn-primary">Know More<i class="isax isax-arrow-right-34 ms-2"></i></a> -->
 					</div>
 
@@ -204,8 +204,8 @@
 					
 					</div>
                     <div class="loader-item text-center">
-                        <a href="#" class="btn btn-primary d-inline-flex align-items-center">
-                            <i class="isax isax-d-cube-scan me-2"></i>Load More 15 Specialities
+                        <a href="{% url 'departments' %}" class="btn btn-primary d-inline-flex align-items-center">
+                            <i class="isax isax-d-cube-scan me-2"></i>See More 
                         </a>
                     </div>
 

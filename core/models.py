@@ -56,6 +56,14 @@ class Message(models.Model):
         return self.name + ' - ' + self.designation
     
 
+class Subscribe(models.Model):
+    email = models.EmailField(unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+    
+
 
 class SiteSetting(models.Model):
     # Branding
