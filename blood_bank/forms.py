@@ -3,12 +3,12 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 # import bleach
 
-from .models import Service, Department
+from .models import BloodDonor
 
 
-class DepartmentForm(forms.ModelForm):
+class BloodDonorForm(forms.ModelForm):
     class Meta:
-        model = Department
+        model = BloodDonor
         fields = '__all__'
         
     def __init__(self, *args, **kwargs):
@@ -18,14 +18,3 @@ class DepartmentForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Save'))
         # self.fields['category'].empty_label = 'Select Category'
 
-
-class ServiceForm(forms.ModelForm):
-    class Meta:
-        model = Service
-        fields = '__all__'
-        
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.add_input(Submit('submit', 'Save'))

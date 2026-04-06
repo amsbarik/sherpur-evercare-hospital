@@ -32,7 +32,7 @@ class Department(BaseModel):
 class Service(BaseModel):
     name = models.CharField(max_length=150)
     slug = models.SlugField(unique=True, blank=True)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name="services")
+    # department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name="services")
     service_icon = models.ImageField(upload_to='icons/')
     description = models.TextField(blank=True)
 

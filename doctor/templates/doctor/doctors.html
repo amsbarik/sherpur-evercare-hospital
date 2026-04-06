@@ -86,24 +86,28 @@
                                 <div id="collapse1" class="accordion-collapse show" aria-labelledby="heading1">
                                     <div class="accordion-body d-flex pt-3">
 
-                                        {% for s in all_specializations %}
-                                        <div class="d-flex align-items-center justify-content-between mb-2 me-4">
-                                            <div class="form-check">
-                                                <input 
-                                                    class="form-check-input"
-                                                    type="checkbox"
-                                                    name="specialization"
-                                                    value="{{ s.id }}"
-                                                    id="spec{{ s.id }}"
-                                                    {% if s.id|stringformat:"s" in selected_specializations %}checked{% endif %}
-                                                    onchange="this.form.submit()"
-                                                >
-                                                <label class="form-check-label" for="spec{{ s.id }}">
-                                                    {{ s.name }}
-                                                </label>
+                                        <div class="row g-4 ">
+                                            {% for s in all_specializations %}
+                                            <div class="col-auto">
+                                                <div class="d-flex align-items-center justify-content-between mb-2 me-4">
+                                                    <div class="form-check">
+                                                        <input 
+                                                            class="form-check-input"
+                                                            type="checkbox"
+                                                            name="specialization"
+                                                            value="{{ s.id }}"
+                                                            id="spec{{ s.id }}"
+                                                            {% if s.id|stringformat:"s" in selected_specializations %}checked{% endif %}
+                                                            onchange="this.form.submit()"
+                                                        >
+                                                        <label class="form-check-label" for="spec{{ s.id }}">
+                                                            {{ s.name }}
+                                                        </label>
+                                                    </div>
+                                                </div>
                                             </div>
+                                            {% endfor %}
                                         </div>
-                                        {% endfor %}
 
                                     </div>
                                 </div>

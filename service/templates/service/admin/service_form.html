@@ -29,16 +29,14 @@
         </div> -->
         
         <div class="card-body" style="padding: 36px;">
-            <div class="row row-cols-1 row-cols-md-2">
+            <div class="row row-cols-1 row-cols-md-">
                 <div class="col">
                     {{ form.name | as_crispy_field }}
                 </div>
                 <div class="col">
                     {{ form.slug | as_crispy_field }}
                 </div>
-                <div class="col">
-                    {{ form.department | as_crispy_field }}
-                </div>
+                
             
                 <div class="col">
                     {{ form.order | as_crispy_field }}

@@ -50,21 +50,28 @@
             </div>
             <!-- Service Item End -->
 
-            <!-- Service Item -->
-            {% for service in services %}
-            <div class="col-xl-2 col-lg-4 col-sm-6 d-flex">
-                <div class="services-item-two w-100 wow fadeInUp {% cycle 'bg-success-transparent' 'bg-pink-transparent' 'bg-gray-transparent' 'bg-secondary-transparent' 'bg-orange-transparent' 'bg-primary-transparent' %}" data-wow-delay="0.2s" data-wow-duration="2s">
-                    {% if service.service_icon %}
-                    <div class="service-icon">
-                        <img src="{{ service.service_icon.url }}" alt="lab" class="img-fluid">
+        
+
+        </div>
+
+
+        <!-- blood donor start  -->
+        <div class="row">
+            <div class="col">
+                <div class="blood-donor-card">
+                    <img src="" alt="">
+                    <h5>খাইরুল আহসান</h5>
+                    <p><i class="fa-solid fa-location-dot me-2"></i> শেরপুর সদর, শেরপুর</p>
+                    <div>
+                        <h1>A+</h1>
                     </div>
-                    {% endif %}
-                    <h3><a href="#">Lab Testing Services</a></h3>
+
+                    <div>
+                        <p>যোগাযোগ করুন</p>
+                        <p><i class="fa-solid fa-phone me-2"></i> 01723361666</p>
+                    </div>
                 </div>
             </div>
-            {% endfor %}
-            <!-- Service Item End -->
-
         </div>
 
     </div>
