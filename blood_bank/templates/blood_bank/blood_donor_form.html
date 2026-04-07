@@ -49,10 +49,10 @@
             </div>
 
             <div class="col-12 col-md-3 d-flex">
-                <a href="{% url 'blood_donor_form' %}" style="width: 100%;">
+                <a href="{% url 'blood_donors' %}" style="width: 100%;">
                     <div class="donat-btn rounded p-4">
                         <div class=""><i class="fa-solid fa-droplet"></i></div>
-                        <h2 class="mt-3">আপনার তথ্য দিন</h2>
+                        <h2 class="mt-3">ব্লাড ব্যাংকে যান</h2>
                     </div>
                 </a>
             </div>
@@ -63,48 +63,46 @@
         </div>
 
 
-        <!-- blood donor start  -->
+        <!-- blood donor form start  -->
+        <div class="container mt-5">
+    <h2 class="mb-4 text-center" style="font-size: 30px;">রক্তদাতা নিবন্ধন ফর্ম</h2>
 
+    <form method="POST" enctype="multipart/form-data" class="p-4 shadow rounded bg-light">
+        {% csrf_token %}
 
-        <div class="row mt-lg-5 mt-4 g-4 row-cols-2 row-cols-lg-4">
-
-            {% for donor in donors %}
-            <div class="col">
-                <div class="blood-donor-card bg-light text-center rounded">
-
-                    <div class="card-top p-4" style="height: calc(100%-72px);">
-                        {% if donor.photo %}
-                        <img class="rounded-circle" src="{{ donor.photo.url }}" width="100" height="100">
-                        {% else %}
-                        <img class="rounded-circle" src="{% static 'img/user-icon.png' %}" width="100" height="100">
-                        {% endif %}
-
-                        <h5 class="mt-3">{{ donor.name }}</h5>
-
-                        <p class="mt-2">
-                            <i class="fa-solid fa-location-dot me-2"></i>
-                            {{ donor.address }}
-                        </p>
-
-                        <h1 class="blood-group rounded-pill">
-                            <i class="fa-solid fa-droplet"></i> {{ donor.blood_group }}
-                        </h1>
-                    </div>
-
-                    <!-- ✅ Dynamic last donated -->
-                    <p>{{ donor.last_donated_text }}</p>
-
-                    <div class="p-2 card-bottom rounded">
-                        <p class="mb-0">যোগাযোগ করুন</p>
-                        <p class="mb-0 contact">
-                            <i class="fa-solid fa-phone me-2"></i>{{ donor.mobile }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-
+        <div class="mb-3">
+            <label class="form-label">আপনার নাম লিখুন *</label>
+            {{ form.name }}
         </div>
+
+        <div class="mb-3">
+            <label class="form-label">আপনার মোবাইল নাম্বার *</label>
+            {{ form.mobile }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">রক্তের গ্রুপ *</label>
+            {{ form.blood_group }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">আপনার ঠিকানা *</label>
+            {{ form.address }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">ছবি</label>
+            {{ form.photo }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">সর্বশেষ রক্তদানের তারিখ</label>
+            {{ form.last_donated }}
+        </div>
+
+        <button type="submit" class="btn btn-primary px-5">তথ্য সাবমিট করুন</button>
+    </form>
+</div>
 
     </div>
 </section>

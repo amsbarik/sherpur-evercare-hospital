@@ -4,14 +4,13 @@ from .import views
 
 urlpatterns = [
     path('blood-donors/', views.blood_donors, name='blood_donors'),
+    path('blood-donor-form/', views.blood_donor_form, name='blood_donor_form'),
 
 
     # admin panel urls 
-    # path('admin/about-us/', views.about_create_or_update, name='about_create_or_update'),
-
-    # path('admin/department-list/', views.department_list, name='department_list'),
-    # path('admin/department/form/', views.department_form, name='department_create'),
-    # path('admin/department/update/<int:pk>/', views.department_form, name='department_update'),
+    path('admin/blood-donor-list/', views.blood_donor_list, name='blood_donor_list'),
+    path('admin/blood-donor/form/', views.blood_donor_create_or_update, name='blood_donor_create'),
+    path('admin/blood-donor/update/<int:pk>/', views.blood_donor_create_or_update, name='blood_donor_update'),
 
 ]
 

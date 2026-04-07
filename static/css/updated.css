@@ -23,3 +23,52 @@
     border-left: 16px solid #0AA79C;
     padding-left: 16px;
 }
+
+/* blood-donor-card  */
+.blood-donor-card{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border: 1px dashed #0AA79C;
+    transition: .4s;
+    height: 100%;
+    img{
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+
+    }
+    .blood-group{
+        background-color: #ffa8ab;
+        color: white;
+        font-size: 24px;
+        display: inline-block;
+        padding: 6px 24px 4px 24px;
+        i{color: #EB1F27}
+    }
+    .card-bottom{
+        background-color: #0AA79C;
+        p{color: black;}
+        .contact{
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+        }
+    }
+}
+
+.blood-donor-card:hover{
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.donat-btn{
+    background-color: #0AA79C;
+    text-align: center;
+    width: 100%;
+    i{
+        color: #EB1F27;
+        font-size: 60px;
+    }
+    h2{
+        font-size: 20px;
+        color: black;
+    }
+}
