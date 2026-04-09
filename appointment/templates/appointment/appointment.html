@@ -35,35 +35,421 @@
 <section class="section service-section pt-4 pt-lg-5">
     <div class="container">
 
-        <div class="row g-4">
+    
 
-            <!-- Service Item -->
-            <div class="col-xl-2 col-lg-4 col-sm-6 d-flex">
-                <div class="services-item-two bg-primary-transparent w-100 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1s">
-                    <div class="service-icon">
-                        <img src="{% static 'img/icons/booking.svg' %}" alt="booking" class="img-fluid">
+        <!-- form start  -->
+
+<style>
+.schedule-card {
+    border: 1px solid #ddd;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: 0.2s;
+}
+
+.schedule-card:hover {
+    border-color: #0AA79C;
+}
+
+.schedule-card.active {
+    border-color: #0AA79C;
+    background: #eef5ff;
+}
+</style>
+
+
+        <div class="card contact-form-card w-100">
+            <div class="card-body">
+
+
+                <form action="{% url 'book_appointment' %}" method="POST"> {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">রোগীর নাম *</label>
+                                <input type="text" name="patient_name" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">মোবাইল নাম্বার *</label>
+                                <input type="text" name="patient_phone" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">ইমেইল</label>
+                                <input type="text" name="patient_email" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">রোগীর ঠিকানা</label>
+                                <input type="text" name="patient_address" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">চিকিৎসা বিভাগ *</label>
+                                <select name="department" id="department-select" required class="form-select form-select-sm" aria-label="Select Service">
+                                    <option value="">বিভাগ নির্বাচন করুন</option>
+                                    {% for department in departments %} 
+                                        <option value="{{ department.id }}">{{ department.name }}</option>
+                                    {% endfor %}
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">বিভাগীয় ডাক্তার *</label>
+                                <select name="doctor" id="doctor-select" required class="form-select form-select-sm" aria-label="Select doctor">
+                                    <option value="">ডাক্তার নির্বাচন করুন</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        
+
+                        
+
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label class="form-label">ডাক্তারের সময়সূচী *</label>
+
+                                <div id="schedule-section">
+                                    <div id="schedule-cards">
+                                        <p class="text-muted">ডাক্তারের সময়সূচী দেখার জন্য অনুগ্রহ করে প্রথমে একজন ডাক্তার নির্বাচন করুন।</p>
+                                    </div>
+
+                                    <small id="schedule-error" class="text-danger"></small>
+                                </div>
+
+                                <input type="hidden" name="schedule" id="selected-schedule">
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label class="form-label">সমস্যার বিররণ</label>
+                                <textarea name="notes" class="form-control" rows="6"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group-btn mb-0">
+                                <button type="submit" class="btn btn-primary-gradient px-4">অ্যাপয়েন্টমেন্ট বুক করুন</button>
+                            </div>
+                        </div>
                     </div>
-                    <h3><a href="booking.html">Book Appointment</a></h3>
-                </div>
-            </div>
-            <!-- Service Item End -->
+                </form>
 
-            <!-- Service Item -->
-            {% for service in services %}
-            <div class="col-xl-2 col-lg-4 col-sm-6 d-flex">
-                <div class="services-item-two w-100 wow fadeInUp {% cycle 'bg-success-transparent' 'bg-pink-transparent' 'bg-gray-transparent' 'bg-secondary-transparent' 'bg-orange-transparent' 'bg-primary-transparent' %}" data-wow-delay="0.2s" data-wow-duration="2s">
-                    {% if service.service_icon %}
-                    <div class="service-icon">
-                        <img src="{{ service.service_icon.url }}" alt="lab" class="img-fluid">
-                    </div>
-                    {% endif %}
-                    <h3><a href="#">Lab Testing Services</a></h3>
-                </div>
-            </div>
-            {% endfor %}
-            <!-- Service Item End -->
 
+
+            </div>
         </div>
+
+      
+        <!-- <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Date*</label>
+                                <input type="date" name="appointment_date" id="appointment-date" required>
+                            </div>
+                        </div> -->
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+
+    const departmentSelect = document.getElementById("department-select");
+    const doctorSelect = document.getElementById("doctor-select");
+
+    const scheduleCards = document.getElementById("schedule-cards");
+    const selectedSchedule = document.getElementById("selected-schedule");
+
+    const scheduleError = document.getElementById("schedule-error");
+    const scheduleSection = document.getElementById("schedule-section");
+
+
+    // =========================
+    // LOAD DOCTORS BY DEPARTMENT
+    // =========================
+    departmentSelect.addEventListener("change", function () {
+        const departmentId = this.value;
+
+        doctorSelect.innerHTML = '<option value="">ডাক্তার নির্বাচন করুন</option>';
+        scheduleCards.innerHTML = '<p class="text-muted">ডাক্তারের সময়সূচী দেখার জন্য অনুগ্রহ করে প্রথমে একজন ডাক্তার নির্বাচন করুন।</p>';
+        selectedSchedule.value = '';
+        scheduleError.textContent = '';
+
+        if (!departmentId) return;
+
+        fetch(`/ajax/load-doctors/?department_id=${departmentId}`)
+            .then(res => res.json())
+            .then(data => {
+                if (!data.length) {
+                    doctorSelect.innerHTML =
+                        '<option value="">No doctors available</option>';
+                    return;
+                }
+
+                data.forEach(doctor => {
+                    doctorSelect.innerHTML += `
+                        <option value="${doctor.id}">
+                            ${doctor.name} - ${doctor.designation}
+                        </option>
+                    `;
+                });
+            });
+    });
+
+
+    // =========================
+    // LOAD SCHEDULES BY DOCTOR
+    // =========================
+    doctorSelect.addEventListener("change", function () {
+        const doctorId = this.value;
+
+        scheduleCards.innerHTML = '';
+        selectedSchedule.value = '';
+        scheduleError.textContent = '';
+
+        if (!doctorId) {
+            scheduleCards.innerHTML =
+                '<p class="text-muted">ডাক্তারের সময়সূচী দেখার জন্য অনুগ্রহ করে প্রথমে একজন ডাক্তার নির্বাচন করুন।</p>';
+            return;
+        }
+
+        fetch(`/ajax/load-schedules/?doctor_id=${doctorId}`)
+            .then(res => res.json())
+            .then(data => {
+
+                if (!data.length) {
+                    scheduleCards.innerHTML =
+                        '<p class="text-danger">এই ডাক্তারের জন্য কোনো অ্যাপয়েন্টমেন্ট উপলব্ধ নেই। অনুগ্রহ করে অন্য ডাক্তার বেছে নিন অথবা আমাদের সাথে যোগাযোগ করুন।</p>';
+                    return;
+                }
+
+                data.forEach(schedule => {
+                    scheduleCards.innerHTML += `
+                        <div class="schedule-card" data-id="${schedule.id}">
+                            <strong>${schedule.day_of_week}</strong><br>
+                            ${schedule.start_time} - ${schedule.end_time}
+                        </div>
+                    `;
+                });
+
+                // Schedule Selection
+                document.querySelectorAll('.schedule-card').forEach(card => {
+                    card.addEventListener('click', function () {
+
+                        document.querySelectorAll('.schedule-card')
+                            .forEach(c => c.classList.remove('active'));
+
+                        this.classList.add('active');
+
+                        selectedSchedule.value = this.dataset.id;
+
+                        scheduleError.textContent = '';
+                    });
+                });
+
+            });
+    });
+
+
+    // =========================
+    // FORM SUBMIT VALIDATION
+    // =========================
+    form.addEventListener("submit", function (e) {
+
+        if (!selectedSchedule.value) {
+            e.preventDefault();
+
+            scheduleError.textContent = "অনুগ্রহ করে একটি সময়সূচী নির্বাচন করুন।";
+
+            scheduleSection.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            return false;
+        }
+
+    });
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const departmentSelect = document.getElementById("department-select");
+    const doctorSelect = document.getElementById("doctor-select");
+    const scheduleCards = document.getElementById("schedule-cards");
+    const selectedSchedule = document.getElementById("selected-schedule");
+
+    departmentSelect.addEventListener("change", function () {
+        fetch(`/ajax/load-doctors/?department_id=${this.value}`)
+            .then(res => res.json())
+            .then(data => {
+                doctorSelect.innerHTML = '<option value="">Select Doctor</option>';
+                scheduleCards.innerHTML = '';
+                selectedSchedule.value = '';
+
+                data.forEach(doctor => {
+                    doctorSelect.innerHTML += `
+                        <option value="${doctor.id}">
+                            ${doctor.name} - ${doctor.designation}
+                        </option>`;
+                });
+            });
+    });
+
+    doctorSelect.addEventListener("change", function () {
+        fetch(`/ajax/load-schedules/?doctor_id=${this.value}`)
+            .then(res => res.json())
+            .then(data => {
+                scheduleCards.innerHTML = '';
+                selectedSchedule.value = '';
+
+                if (!data.length) {
+                    scheduleCards.innerHTML =
+                        '<p>No schedules available.</p>';
+                    return;
+                }
+
+                data.forEach(schedule => {
+                    scheduleCards.innerHTML += `
+                        <div class="schedule-card" data-id="${schedule.id}">
+                            ${schedule.day_of_week}<br>
+                            ${schedule.start_time} - ${schedule.end_time}
+                        </div>`;
+                });
+
+                document.querySelectorAll('.schedule-card').forEach(card => {
+                    card.addEventListener('click', function () {
+                        document.querySelectorAll('.schedule-card')
+                            .forEach(c => c.classList.remove('active'));
+
+                        this.classList.add('active');
+                        selectedSchedule.value = this.dataset.id;
+                    });
+                });
+            });
+    });
+});
+</script>
+ -->
+
+<!-- <script>
+document.querySelector("form").addEventListener("submit", function (e) {
+    const selectedSchedule = document.getElementById("selected-schedule");
+    const scheduleError = document.getElementById("schedule-error");
+
+    if (!selectedSchedule.value) {
+        e.preventDefault();
+
+        scheduleError.textContent = "Please select a schedule.";
+        document.getElementById("schedule-section")
+            .scrollIntoView({ behavior: "smooth", block: "center" });
+
+        return false;
+    }
+
+    scheduleError.textContent = "";
+});
+</script> -->
+
+
+
+<!-- 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const departmentSelect = document.getElementById("department-select");
+    const doctorSelect = document.getElementById("doctor-select");
+    const dateInput = document.getElementById("appointment-date");
+    const scheduleCards = document.getElementById("schedule-cards");
+    const selectedSchedule = document.getElementById("selected-schedule");
+
+    departmentSelect.addEventListener("change", function () {
+        fetch(`/ajax/load-doctors/?department_id=${this.value}`)
+            .then(res => res.json())
+            .then(data => {
+                doctorSelect.innerHTML = '<option value="">Select Doctor</option>';
+                scheduleCards.innerHTML = '';
+                selectedSchedule.value = '';
+
+                data.forEach(doctor => {
+                    doctorSelect.innerHTML += `
+                        <option value="${doctor.id}">
+                            ${doctor.name} - ${doctor.designation}
+                        </option>`;
+                });
+            });
+    });
+
+    function loadSchedules() {
+        const doctorId = doctorSelect.value;
+        const date = dateInput.value;
+
+        if (!doctorId || !date) return;
+
+        fetch(`/ajax/load-schedules/?doctor_id=${doctorId}&appointment_date=${date}`)
+            .then(res => res.json())
+            .then(data => {
+                scheduleCards.innerHTML = '';
+                selectedSchedule.value = '';
+
+                if (!data.length) {
+                    scheduleCards.innerHTML = '<p>No schedule available for selected date.</p>';
+                    return;
+                }
+
+                data.forEach(schedule => {
+                    scheduleCards.innerHTML += `
+                        <div class="schedule-card" data-id="${schedule.id}">
+                            ${schedule.day_of_week}<br>
+                            ${schedule.start_time} - ${schedule.end_time}
+                        </div>`;
+                });
+
+                document.querySelectorAll('.schedule-card').forEach(card => {
+                    card.addEventListener('click', function () {
+                        document.querySelectorAll('.schedule-card').forEach(c => c.classList.remove('active'));
+                        this.classList.add('active');
+                        selectedSchedule.value = this.dataset.id;
+                    });
+                });
+            });
+    }
+
+    doctorSelect.addEventListener("change", loadSchedules);
+    dateInput.addEventListener("change", loadSchedules);
+});
+</script>
+
+
+ -->
+
+
+
+
+
+        <!-- form end  -->
 
     </div>
 </section>

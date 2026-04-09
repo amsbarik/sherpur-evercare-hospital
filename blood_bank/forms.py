@@ -33,17 +33,23 @@ class BloodDonorForm(forms.ModelForm):
 
 
 
-# class BloodDonorForm(forms.ModelForm):
-#     class Meta:
-#         model = BloodDonor
-#         fields = ['name', 'mobile', 'blood_group', 'address', 'photo', 'last_donated']
+class BloodDonorUpdateForm(forms.ModelForm):
+    class Meta:
+        model = BloodDonor
+        fields = '__all__'
+
+
+        widgets = {
+           
+            'last_donated': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+        }
         
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.helper = FormHelper()
-#         self.helper.form_method = 'post'
-#         self.helper.add_input(Submit('submit', 'Save'))
-#         self.fields['blood_group'].empty_label = 'Select blood_group'
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Save'))
+        # self.fields['blood_group'].choices = 'Select blood_group'
 
 
 

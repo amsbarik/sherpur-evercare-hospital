@@ -68,7 +68,8 @@
                     </th>
                     <th scope="col">Updated At</th>
                     <th scope="col">Name</th>
-                    <!-- <th scope="col">Department</th> -->
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Blood Group</th>
                     <th scope="col">Order</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
@@ -91,13 +92,15 @@
                     <td class="cell"><span>{{ blood_donor.created_at | abbreviate_month }}</span><br> <span class="note" style="font-size: 13px;">{{ blood_donor.created_at | time:"h:i A" }}</span></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            {% if blood_donor.blood_donor_icon %}
-                            <img src="{{ blood_donor.blood_donor_icon.url }}" alt="Image" style="width: 44px; height: auto; object-fit: contain;" class="flex-shrink-0 me-12 radius-8">
+                            {% if blood_donor.photo %}
+                            <img src="{{ blood_donor.photo.url }}" alt="Image" style="width: 44px; height: auto; object-fit: contain;" class="flex-shrink-0 me-12 radius-8">
                             {% endif %}
                             <h6 class="text-md mb-0 fw-medium flex-grow-1">{{ blood_donor.name }}</h6>
                         </div>
                     </td>
 
+                    <td>{{ blood_donor.mobile}}</td>
+                    <td>{{ blood_donor.blood_group}}</td>
                     
                     <!-- <td> <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Paid</span> </td> -->
 

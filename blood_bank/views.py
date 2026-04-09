@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 from core.views import is_superuser
 from .models import BloodDonor
-from .forms import BloodDonorForm
+from .forms import BloodDonorForm, BloodDonorUpdateForm
 
 
 # Create your views here.
@@ -41,7 +41,6 @@ def blood_donor_form(request):
 
 # admin views 
 
-
 # BloodDonor list  
 @login_required
 @user_passes_test(is_superuser)
@@ -59,19 +58,19 @@ def blood_donor_create_or_update(request, pk=0):
     
     if request.method == 'GET':
         if pk == 0:
-            form = BloodDonorForm()
+            form = BloodDonorUpdateForm()
         else:
             donor = BloodDonor.objects.get(id=pk)
-            form = BloodDonorForm(instance=donor)
+            form = BloodDonorUpdateForm(instance=donor)
             
         return render(request, 'blood_bank/admin/blood_donor_create_or_update.html', {'form': form})
     
     else:
         if pk == 0:
-            form = BloodDonorForm(request.POST, request.FILES)
+            form = BloodDonorUpdateForm(request.POST, request.FILES)
         else:
             donor = BloodDonor.objects.get(id=pk)
-            form = BloodDonorForm(request.POST, request.FILES, instance=donor)
+            form = BloodDonorUpdateForm(request.POST, request.FILES, instance=donor)
 
         if form.is_valid():
             form.save()
