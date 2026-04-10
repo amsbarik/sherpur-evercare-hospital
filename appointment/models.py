@@ -72,7 +72,7 @@ class Appointment(BaseModel):
     #     unique_together = ("doctor", "appointment_date", "appointment_time")
 
     def __str__(self):
-        return f"{self.patient_name} - {self.doctor.name} ({self.appointment_date})"
+        return f"{self.patient_name} - {self.doctor.name}"
     
 
 

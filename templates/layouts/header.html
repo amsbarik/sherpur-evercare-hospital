@@ -219,15 +219,19 @@
 							</ul>
 						</li> -->
 
-						<li class="has-submenu"><a href="{% url 'index' %}" class="main-menu {% if request.resolver_match.url_name == 'index' %}active{% endif %}">Home</a></li>
-						<li class="has-submenu"><a href="{% url 'about_us' %}" class="main-menu {% if request.resolver_match.url_name == 'about_us' %}active{% endif %}">About Us</a></li>
-						<li class="has-submenu"><a href="{% url 'doctors' %}" class="main-menu {% if request.resolver_match.url_name == 'doctors' %}active{% endif %}">Doctors</a></li>
-						<li class="has-submenu"><a href="{% url 'appointment' %}" class="main-menu {% if request.resolver_match.url_name == 'appointment' %}active{% endif %}">Appointment</a></li>
-						<li class="has-submenu"><a href="{% url 'departments' %}" class="main-menu {% if request.resolver_match.url_name == 'departments' %}active{% endif %}">Departments</a></li>
-						<li class="has-submenu"><a href="{% url 'services' %}" class="main-menu {% if request.resolver_match.url_name == 'services' %}active{% endif %}">Services</a></li>
-						<li class="has-submenu"><a href="{% url 'blood_donors' %}" class="main-menu {% if request.resolver_match.url_name == 'blood_donors' %}active{% endif %}">Blood Bank</a></li>
-						<li class="has-submenu"><a href="{% url 'blogs' %}" class="main-menu {% if request.resolver_match.url_name == 'blogs' %}active{% endif %}">Blogs</a></li>
-						<li class="has-submenu"><a href="{% url 'contact_us' %}" class="main-menu {% if request.resolver_match.url_name == 'contact_us' %}active{% endif %}">Contact</a></li>
+
+					
+
+
+						<li class="has-submenu"><a href="{% url 'index' %}" class="main-menu {% if request.resolver_match.url_name == 'index' %}active{% endif %}">হোম</a></li>
+						<li class="has-submenu"><a href="{% url 'about_us' %}" class="main-menu {% if request.resolver_match.url_name == 'about_us' %}active{% endif %}">আমাদের সম্পর্কে</a></li>
+						<li class="has-submenu"><a href="{% url 'doctors' %}" class="main-menu {% if request.resolver_match.url_name == 'doctors' %}active{% endif %}">বিশেষজ্ঞ ডাক্তারগণ</a></li>
+						<li class="has-submenu"><a href="{% url 'appointment' %}" class="main-menu {% if request.resolver_match.url_name == 'appointment' %}active{% endif %}">অ্যাপয়েন্টমেন্ট নিন</a></li>
+						<li class="has-submenu"><a href="{% url 'departments' %}" class="main-menu {% if request.resolver_match.url_name == 'departments' %}active{% endif %}">বিভাগ সমূহ</a></li>
+						<li class="has-submenu"><a href="{% url 'services' %}" class="main-menu {% if request.resolver_match.url_name == 'services' %}active{% endif %}">সেবা সমূহ</a></li>
+						<li class="has-submenu"><a href="{% url 'blood_donors' %}" class="main-menu {% if request.resolver_match.url_name == 'blood_donors' %}active{% endif %}">ব্লাড ব্যাংক</a></li>
+						<li class="has-submenu"><a href="{% url 'blogs' %}" class="main-menu {% if request.resolver_match.url_name == 'blogs' %}active{% endif %}">ব্লগ</a></li>
+						<li class="has-submenu"><a href="{% url 'contact_us' %}" class="main-menu {% if request.resolver_match.url_name == 'contact_us' %}active{% endif %}">যোগাযোগ করুন</a></li>
 
 					</ul>
 					<div class="header-items">

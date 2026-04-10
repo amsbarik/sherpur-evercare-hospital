@@ -9,7 +9,7 @@ class Hospital(BaseModel):
     address = models.CharField(max_length=200)
 
     def __str__(self):
-        return f'{self.name} - {self.address}'
+        return f'{self.name}'
     
 
 
@@ -81,7 +81,7 @@ class DoctorSchedule(BaseModel):
     max_patients = models.PositiveIntegerField(default=20)
 
     def __str__(self):
-        return f"{self.doctor.name} - {self.day_of_week}"
+        return f"{self.day_of_week} ({self.start_time}-{self.end_time})"
     
 
 

@@ -19,7 +19,7 @@
         </div>
         <div class="card-body p-0">
             <div class="d-flex align-items-center justify-content-between border-bottom p-3">
-                <a href="#" class="text-teal fw-medium fs-14">{{ doctor.department }}</a>
+                <a href="#" class="text-teal fw-semibold fs-24">{{ doctor.department }} বিভাগ</a>
                 
                     {% if doctor.is_available and doctor.schedules.all %}
                     <span class="badge bg-success-light d-inline-flex align-items-center">
@@ -98,14 +98,14 @@
                 <div class="d-flex align-items-center justify-content-between flex-wrap row-gap-3 mt-3">
                     <div class="d-flex align-items-center flex-wrap row-gap-3">
                         <div class="me-3">
-                            <p class="mb-1">Consultation Fees</p>
+                            <p class="mb-1">পরামর্শ ফি</p>
                             <h3 class="text-orange">{{ doctor.consultation_fee | floatformat:0 }} টাকা </h3>
                         </div>
                         <!-- <p class="mb-0">Next available at <br>10:00 AM - 15 Oct, Tue</p> -->
                     </div>
-                    <a href="booking.html" class="btn btn-md btn-primary-gradient d-inline-flex align-items-center rounded-pill">
+                    <a href="{% url 'appointment' %}" class="btn btn-md btn-primary-gradient d-inline-flex align-items-center rounded-pill">
                         <i class="isax isax-calendar-1 me-2"></i>
-                        Book Appointment
+                        অ্যাপয়েন্টমেন্ট বুক করুন
                     </a>
                 </div>
             </div>

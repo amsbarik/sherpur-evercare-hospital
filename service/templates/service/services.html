@@ -35,7 +35,7 @@
 <section class="section service-section pt-4 pt-lg-5">
     <div class="container">
 
-        <a href="#" class="text-end text-primary d-block mb-4">Get Appointment</a>
+        <a href="{% url 'appointment' %}" class="text-end text-primary d-block mb-4">অ্যাপয়েন্টমেন্ট নিন</a>
 
         <div class="row g-4">
 
@@ -45,7 +45,7 @@
                     <div class="service-icon">
                         <img src="{% static 'img/icons/booking.svg' %}" alt="booking" class="img-fluid">
                     </div>
-                    <h3><a href="booking.html">Book Appointment</a></h3>
+                    <h3><a href="{% url 'appointment' %}">অ্যাপয়েন্টমেন্ট বুক করুন</a></h3>
                 </div>
             </div>
             <!-- Service Item End -->

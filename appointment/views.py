@@ -1,5 +1,13 @@
 from django.shortcuts import render
 
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required, user_passes_test
+
+
+from core.views import is_superuser
+
+
+
 from django.views.decorators.http import require_GET, require_POST
 
 from service.models import Department, Service
@@ -129,6 +137,21 @@ def book_appointment(request):
 
     return redirect(request.META.get("HTTP_REFERER", "/"))
 
+
+
+
+
+
+
+
+# admin views 
+# Service 
+@login_required
+@user_passes_test(is_superuser)
+def appointment_list(request):
+    appointments = Appointment.objects.order_by('created_at').all()
+    
+    return render(request, 'appointment/admin/appointment_list.html', {'appointments': appointments})
 
 
 

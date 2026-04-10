@@ -13,12 +13,12 @@
 					<div class="col-xl-6">
 						<div class="banner-content wow fadeInUp" data-wow-duration="1s">
 							<div class="banner-badge">
-								<span>Advanced Technology</span> 
-								<p>Comprehensive diagnosis by top specialists.</p>
+								<span>উন্নত প্রযুক্তি</span> 
+								<p>শীর্ষ বিশেষজ্ঞদের দ্বারা পূর্ণাঙ্গ রোগ নির্ণয়।</p>
 							</div>
 							<h1>{{ hero_overview.heading }} </h1>
 							<p>{{ hero_overview.short_description }}</p>
-							<a href="{% url 'appointment' %}" class="btn btn-md btn-white"><i class="isax isax-lock me-2"></i>Book an Appointment</a>
+							<a href="{% url 'appointment' %}" class="btn btn-md btn-white"><i class="isax isax-lock me-2"></i>অ্যাপয়েন্টমেন্ট বুক করুন</a>
 						</div>
 					</div>
 					<div class="col-xl-6">
@@ -43,9 +43,10 @@
 								<a href="#" class="item-2 item"><i class="isax isax-call-slash"></i></a>
 								<a href="#" class="item-3 item"><i class="isax isax-microphone-2"></i></a> -->
 
-								<a href="#" class="item-1 item"><i class="fa-solid fa-envelope-open"></i> </a>
-								<a href="#" class="item-2 item"><i class="fa-solid fa-phone"></i></a>
-								<a href="#" class="item-3 item"><i class="fa-brands fa-facebook"></i></a>
+								<a href="mailto:{{ site_setting.email }}" class="item-1 item"><i class="fa-solid fa-envelope-open"></i> </a>
+								<a href="tel:{{ site_setting.mobile }}" class="item-2 item"><i class="fa-solid fa-phone"></i></a>
+								<a target="_blank" href="{{ site_setting.facebook_url }}" class="item-3 item"><i class="fa-brands fa-facebook"></i></a>		
+								
 							</div>
 						</div>
 					</div>
@@ -112,7 +113,7 @@
 							<div class="service-icon">
 								<img src="{% static 'img/icons/booking.svg' %}" alt="booking" class="img-fluid">
 							</div>
-							<h3><a href="booking.html">Book Appointment</a></h3>
+							<h3><a href="{% url 'appointment' %}">অ্যাপয়েন্টমেন্ট বুক করুন</a></h3>
 						</div>
 					</div>
 					<!-- Service Item End -->
@@ -190,8 +191,8 @@
                                             </a>
 											{% endif %}
                                             <div class="ms-3">
-                                                <h6 class="mb-1"><a href="doctor-grid.html">{{ department.name }}</a></h6>
-                                                <p class="fs-14 mb-0">151 Doctors</p>
+                                                <h6 class="mb-1"><a href="doctor-grid.html">{{ department.name }} বিভাগ</a></h6>
+                                                <!-- <p class="fs-14 mb-0">151 Doctors</p> -->
                                             </div>
                                         </div>
                                         <a href="doctor-grid.html" class="link-icon"><i class="isax isax-arrow-right-3"></i></a>
@@ -507,7 +508,7 @@
 				<!-- Section Header -->
 				<div class="section-header section-header-two">
 					<div class="section-sub-title"><img src="{% static 'img/icons/section-icon.svg' %}" alt="icon">Blogs & Articles</div>
-					<h2 class="section-title mb-0">Latest News & Stories</h2>
+					<h2 class="section-title mb-0">সর্বশেষ সংবাদ ও গল্প</h2>
 				</div>
 				<!-- Section Header End -->
 
@@ -525,7 +526,7 @@
 					
 				</div>
 				<div class="view-all text-center wow fadeInUp" data-wow-duration="1s">
-					<a href="{% url 'blogs' %}" class="btn btn-md btn-dark">View All Blogs</a>
+					<a href="{% url 'blogs' %}" class="btn btn-md btn-dark">সমস্ত ব্লগ দেখুন</a>
 				</div>
 			</div>
 		</section>
