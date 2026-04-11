@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-6&gjx+(9!s1e0n_q4i3=r8r8-g0crh@)7hw#i+v%27s@v(j)c_
 DEBUG = True
 
 ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ['https://padmaawtresthouse.com.bd', 'https://www.padmaawtresthouse.com.bd', 'www.padmaawtresthouse.com.bd', 'padmaawtresthouse.com.bd', 'mail.padmaawtresthouse.com.bd']
+# ALLOWED_HOSTS = ['https://sherpurevercarehospital.com.bd', 'https://www.sherpurevercarehospital.com.bd', 'www.sherpurevercarehospital.com.bd', 'sherpurevercarehospital.com.bd', 'mail.sherpurevercarehospital.com.bd']
+
 
 
 SESSION_COOKIE_SECURE = True
@@ -111,13 +112,14 @@ DATABASES = {
 }
 
 
+
 # # in production 
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'padmaawt_hotel_pgsql_db_2026',
-#         'USER': 'padmaawt_hotel_pgsql_db_user_2026',
-#         'PASSWORD': 'B)uz*#@DK;Fqe{M?%&$',
+#         'NAME': 'sherpure_vercarehospital_pgsql_db_2026',
+#         'USER': 'sherpure_vercarehospital_pgsql_db_user_2026',
+#         'PASSWORD': '5M,*^.3$LM~myZaX',
 #         'HOST': '127.0.0.1',
 #         # 'HOST': 'localhost',
 #         'PORT': '5432',
@@ -172,6 +174,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
+
 # # In production ////////////////
 # STATIC_URL = '/static/'
 # STATICFILES_DIRS = [BASE_DIR / 'static']  # Your custom static files
@@ -179,7 +182,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # MEDIA_URL = '/media/'
 # #MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# MEDIA_ROOT = '/home/padmaawt/public_html/media'
+# MEDIA_ROOT = '/home/sherpure/public_html/media'
 
 
 
