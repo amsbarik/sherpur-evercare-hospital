@@ -23,7 +23,7 @@ def index(request):
     hero_overview = HeroOverview.objects.first()
     message = Message.objects.first()
     about_us = AboutUs.objects.first()
-    departments = Department.objects.filter(is_active=True).order_by('order')[:12]
+    departments = Department.objects.filter(is_active=True).order_by('order', 'created_at')
     services = Service.objects.filter(is_active=True).order_by('order')[:11]
     blogs = Blog.objects.filter(is_active=True).order_by('order')[:3]
 

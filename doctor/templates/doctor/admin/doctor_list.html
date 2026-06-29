@@ -7,6 +7,8 @@
 
 {% block content %} 
 
+
+
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
     <h6 class="fw-semibold mb-0">Doctor List</h6>
     <ul class="d-flex align-items-center gap-2">
@@ -101,7 +103,7 @@
                     </td>
 
                     <td>{{ doctor.department.name }}</td>
-                    <td>{{ doctor.qualification }}</td>
+                    <td class="max-td">{{ doctor.qualification }}</td>
                     <td>{{ doctor.consultation_fee }}</td>
                     
                     <!-- <td> <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Paid</span> </td> -->

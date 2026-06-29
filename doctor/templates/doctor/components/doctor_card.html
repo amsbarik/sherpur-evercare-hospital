@@ -83,14 +83,26 @@
                                     <i class="isax isax-archive-14 text-dark me-2"></i> {{ doctor.experience_years }} বছরের অভিজ্ঞতা
                                 </p> -->
                                 <h5 class="mb-3" style="font-size: 15px;">ডাক্তারের সময়সূচী</h5>
+
+                                
                                 {% for schedule in doctor.schedules.all %}
-                                    <p>
-                                        {{ schedule.get_day_of_week_display }}:
-                                        {{ schedule.start_time | time:"h:i A" }} - {{ schedule.end_time | time:"h:i A" }}
-                                    </p>
+
+                                    {% if schedule.is_7days %}
+                                        <p>
+                                            শনিবার - শুক্রবার <br>
+                                            {{ schedule.start_time|time:"h:i A" }} -  {{ schedule.end_time|time:"h:i A" }}
+                                        </p>
+                                    {% else %}
+                                        <p>
+                                            {{ schedule.get_day_of_week_display }}:
+                                            {{ schedule.start_time | time:"h:i A" }} - {{ schedule.end_time | time:"h:i A" }}
+                                        </p>
+                                    {% endif %}
+
                                 {% empty %}
                                     <p>No schedule available</p>
                                 {% endfor %}
+
                             </div>
                         </div>
                     </div>
@@ -103,10 +115,15 @@
                         </div>
                         <!-- <p class="mb-0">Next available at <br>10:00 AM - 15 Oct, Tue</p> -->
                     </div>
-                    <a href="{% url 'appointment' %}" class="btn btn-md btn-primary-gradient d-inline-flex align-items-center rounded-pill">
-                        <i class="isax isax-calendar-1 me-2"></i>
-                        অ্যাপয়েন্টমেন্ট বুক করুন
-                    </a>
+                    
+                    <div>
+                        <p class="mb-2 border rounded-pill text-center"><a href="tel:{{ site_setting.mobile }}" class="btn btn-seconday " title="Pls, click to call">কল করুন : {{ site_setting.mobile }}</a> </p>
+                        <a href="{% url 'appointment' %}" class="btn btn-md btn-primary-gradient d-inline-flex align-items-center rounded-pill">
+                            <i class="isax isax-calendar-1 me-2"></i>
+                            অ্যাপয়েন্টমেন্ট বুক করুন
+                        </a>
+
+                    </div>
                 </div>
             </div>
         </div>
