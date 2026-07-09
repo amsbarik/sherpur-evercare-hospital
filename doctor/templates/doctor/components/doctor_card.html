@@ -12,7 +12,7 @@
     <div class="d-md-flex">
         <div class="card-img card-img-hover">
             {% if doctor.doctor_image %}
-            <a href="doctor-profile.html"><img src="{{ doctor.doctor_image.url }}" alt="{{ doctor.name }}"></a>
+            <a><img src="{{ doctor.doctor_image.url }}" alt="{{ doctor.name }}"></a>
             {% endif %}
             <!-- <div class="grid-overlay-item d-flex align-items-center justify-content-between">
                 <span class="badge bg-orange"><i class="fa-solid fa-star me-1"></i>4.8</span>
@@ -23,7 +23,7 @@
         </div>
         <div class="card-body p-0">
             <div class="d-flex align-items-center justify-content-between border-bottom p-3">
-                <a href="#" class="text-teal fw-semibold fs-24">{{ doctor.department }} বিভাগ</a>
+                <a class="text-teal fw-semibold fs-24">{{ doctor.department }} বিভাগ</a>
                 
                     {% if doctor.is_available and doctor.schedules.all %}
                     <span class="badge bg-success-light d-inline-flex align-items-center">
@@ -43,7 +43,7 @@
                         <div class="col-sm-9">
                             <div>
                                 <h6 class="d-flex align-items-center mb-1">
-                                    <a href="doctor-profile.html">{{ doctor.name }}</a>
+                                    <a >{{ doctor.name }}</a>
                                     <i class="isax isax-tick-circle5 text-success ms-2"></i>
                                 </h6>
                                 <p class="mb-2">

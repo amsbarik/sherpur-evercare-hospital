@@ -24,8 +24,8 @@
         padding-left: 80px;
     }
     .banner-img .img{
-    height: 560px;
-}
+        height: 560px;
+    }
 
 }
 
@@ -33,15 +33,18 @@
   .banner-img .img{
     height: 540px;
 }
+}
 @media (max-width: 992px) {
   .banner-img .img{
     height: 400px;
 }
+}
+
 @media (max-width: 776px) {
   .banner-img .img{
     height: 280px;
 }
-
+}
 
 .active {color: #0AA79C}
 

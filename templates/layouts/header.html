@@ -27,6 +27,8 @@
 						</a>
 					</div>
 					<ul class="main-nav">
+
+						<!-- mega menu -->
 						<!-- <li class="has-submenu megamenu">
 							<a href="{% url 'index' %}" class="main-menu active">Home
 								 <span><i class="fa-solid fa-chevron-down"></i></span> 
@@ -189,7 +191,8 @@
 									</div>
 								</li>
 							</ul> 
-						</li> -->
+						</li>  -->
+						
 
 						<!-- <li class="has-submenu">
 							<a href="{% url 'doctors' %}" class="main-menu">Doctors 
@@ -234,6 +237,8 @@
 						<li class="has-submenu"><a href="{% url 'contact_us' %}" class="main-menu {% if request.resolver_match.url_name == 'contact_us' %}active{% endif %}">যোগাযোগ করুন</a></li>
 
 					</ul>
+
+
 					<div class="header-items">
 						<!-- Item 1 -->
 						<div class="about-popup-item border-0 pb-0">
@@ -280,14 +285,22 @@
 							<a href="login.html" class="btn btn-primary btn-primary-gradient"><i class="isax isax-lock-1 me-2"></i>Logout</a>
 						</div>
 					</div>
+
+					
 				</div>
 			</div>
+
+
 			<ul class="nav header-navbar-rht">
+
+
+
 				<!-- <li class="search-item">
 					<a href="#" class="details-btn" tabindex="-1"  data-bs-toggle="offcanvas" data-bs-target="#search_popup" aria-controls="search_popup">
 						<i class="isax isax-search-normal-1"></i>
 					</a>
 				</li>
+
 				<li class="noti-nav dropdown">
 					<a href="#" class="details-btn" data-bs-toggle="dropdown" aria-label="Notification">
 						<i class="isax isax-notification-bing"></i>
@@ -355,19 +368,25 @@
 						</div>
 					</div>
 				</li>
+
+				
 				<li>
 					<a href="#" class="details-btn" data-bs-toggle="offcanvas" data-bs-target="#support_item">
 						<i class="isax isax-menu5"></i>
 					</a>
-				</li> -->
+				</li>  -->
 
 
-				<li class="dropdown has-arrow logged-item">
-					<!-- <a href="#" data-bs-toggle="dropdown">
+
+
+				<!-- <li class="dropdown has-arrow logged-item">
+
+					<a href="#" data-bs-toggle="dropdown">
 						<span class="user-img">
 							<img class="rounded-circle" src="{% static 'img/user-icon.png' %}" alt="Darren Elder">
 						</span>
-					</a> -->
+					</a>
+
 					<div class="dropdown-menu dropdown-menu-end">
 						<div class="user-header">
 							<div class="avatar">
@@ -382,7 +401,10 @@
 						<a class="dropdown-item" href="profile-settings.html">Profile Settings</a>
 						<a class="dropdown-item" href="login.html">Logout</a>
 					</div>
-				</li>
+				</li> -->
+
+
+
 			</ul>
 		</nav>
 	</div>
