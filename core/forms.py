@@ -3,7 +3,22 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 # import bleach
 
+from core.utils.number_converter import bangla_to_english
+
 from .models import HeroOverview, FAQ, SiteSetting, Message
+
+
+
+
+# custom form for translate number 
+class BanglaDecimalField(forms.DecimalField):
+
+    def to_python(self, value):
+
+        value = bangla_to_english(value)
+
+        return super().to_python(value)
+    
 
 
 class HeroOverviewForm(forms.ModelForm):

@@ -7,11 +7,11 @@
 {% block content %}
 
 		<!-- Banner -->
-		<section class="banner-section-two page-margin-top" style="background: radial-gradient(84.63% 354.2% at 71.21% 68.89%, #4EDEC1 0%, #283B8E 41.35%, #0AA79C 80.92%, #31436D 99.99%, #FFFFFF 100%);;">
-			<div class="container">
+		<section class="banner-section-two page-margin-to" style="background: radial-gradient(84.63% 354.2% at 71.21% 68.89%, #4EDEC1 0%, #283B8E 41.35%, #0AA79C 80.92%, #31436D 99.99%, #FFFFFF 100%);;">
+			<div class="container-fluid">
 				<div class="row align-items-end">
 					<div class="col-xl-6">
-						<div class="banner-content wow fadeInUp" data-wow-duration="1s">
+						<div class="banner-content left-padding wow fadeInUp" data-wow-duration="1s">
 							<div class="banner-badge">
 								<span>উন্নত প্রযুক্তি</span> 
 								<p>শীর্ষ বিশেষজ্ঞদের দ্বারা পূর্ণাঙ্গ রোগ নির্ণয়।</p>
@@ -19,14 +19,24 @@
 							<h1>{{ hero_overview.heading }} </h1>
 							<p>{{ hero_overview.short_description }}</p>
 							<a href="{% url 'appointment' %}" class="btn btn-md btn-white"><i class="isax isax-lock me-2"></i>অ্যাপয়েন্টমেন্ট বুক করুন</a>
+
+							<br>
+							<div class="call-items mt-3 mt-md-4">
+								<a href="mailto:{{ site_setting.email }}" class="item-1 item"><i class="fa-solid fa-envelope-open"></i> </a>
+								<a href="tel:{{ site_setting.mobile }}" class="item-2 item"><i class="fa-solid fa-phone"></i></a>
+								<a target="_blank" href="{{ site_setting.facebook_url }}" class="item-3 item"><i class="fa-brands fa-facebook"></i></a>		
+								
+							</div>
+							
 						</div>
 					</div>
 					<div class="col-xl-6">
 						<div class="banner-img wow fadeInUp" data-wow-duration="2s">
 							{% if hero_overview.image %}
-							<img src="{{ hero_overview.image.url }}" alt="banner" class="img-fluid">
+							<img src="{{ hero_overview.image.url }}" alt="banner" class="img">
 							{% endif %}
-							<div class="banner-user-call">
+
+							<!-- <div class="banner-user-call">
 								{% if hero_overview.calling_photo %}
 								<span class="avatar">
 									<img src="{{ hero_overview.calling_photo.url }}"  alt="patient" class="img-fluid rounded-circle">
@@ -37,17 +47,14 @@
 								</span>
 								{% endif %}
 								<p>Calling.......</p>
-							</div>
-							<div class="call-items">
-								<!-- <a href="#" class="item-1 item"><i class="isax isax-video"></i></a>
-								<a href="#" class="item-2 item"><i class="isax isax-call-slash"></i></a>
-								<a href="#" class="item-3 item"><i class="isax isax-microphone-2"></i></a> -->
+							</div> -->
 
+							<!-- <div class="call-items">
 								<a href="mailto:{{ site_setting.email }}" class="item-1 item"><i class="fa-solid fa-envelope-open"></i> </a>
 								<a href="tel:{{ site_setting.mobile }}" class="item-2 item"><i class="fa-solid fa-phone"></i></a>
 								<a target="_blank" href="{{ site_setting.facebook_url }}" class="item-3 item"><i class="fa-brands fa-facebook"></i></a>		
 								
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -67,32 +74,32 @@
 			<div class="horizontal-slide slide-one bg-primary d-flex" data-direction="left" data-speed="slow">
 				<div class="slide-list d-flex gap-4">
 					<div class="services-slide">
-						<h3>Certified Medical Professionals</h3>
+						<h3>শেরপুর এভারকেয়ার হাসপাতাল</h3>
 					</div>
 					<div class="services-slide">
-						<h3>Advanced Diagnostic Tools</h3>
+						<h3>শেরপুর এভারকেয়ার হাসপাতাল</h3>
 					</div>
 					<div class="services-slide">
-						<h3>Online Appointment Booking</h3>
+						<h3>শেরপুর এভারকেয়ার হাসপাতাল</h3>
 					</div>
 					<div class="services-slide">
-						<h3>Electronic Health Records</h3>
+						<h3>শেরপুর এভারকেয়ার হাসপাতাল</h3>
 					</div>
 				</div>
 			</div>
 			<div class="horizontal-slide slide-two bg-dark d-flex" data-direction="right" data-speed="slow">
 				<div class="slide-list d-flex gap-4">
 					<div class="services-slide">
-						<h3>Fast Reports & Test Results</h3>
+						<h3>ব্যবস্থাপনা পরিচালক: মো: হান্নান, যোগাযোগ: ০১৯১৩৩৮৫৮২২</h3>
 					</div>
 					<div class="services-slide">
-						<h3>Telemedicine Consultations</h3>
+						<h3>ব্যবস্থাপনা পরিচালক: মো: হান্নান, যোগাযোগ: ০১৯১৩৩৮৫৮২২</h3>
 					</div>
 					<div class="services-slide">
-						<h3>Health Monitoring & Follow-Ups</h3>
+						<h3>ব্যবস্থাপনা পরিচালক: মো: হান্নান, যোগাযোগ: ০১৯১৩৩৮৫৮২২</h3>
 					</div>
 					<div class="services-slide">
-						<h3>Emergency & Critical Care</h3>
+						<h3>ব্যবস্থাপনা পরিচালক: মো: হান্নান, যোগাযোগ: ০১৯১৩৩৮৫৮২২</h3>
 					</div>
 				</div>
 			</div>
@@ -169,6 +176,46 @@
 			<img src="{% static 'img/bg/about-bg.png' %}" alt="icon" class="img-fluid about-bg-01">
 		</section>
 		<!-- About Section End -->
+
+		<!-- Speciality Section -->
+		<section class="section speciality-section-two">
+			<div class="container">
+				<div class="section-header section-header-two">
+					<div class="section-sub-title"><img src="{% static 'img/icons/section-icon.svg' %}" alt="icon">বিভাগ ও ডাক্তার</div>
+					<!-- <h2 class="section-title mb-0">Choose the <span>Plans of your Needs</span></h2> -->
+					<h2 class="section-title mb-0 mt-4">বিভাগ অনুযায়ী ডাক্তারগণ</h2>
+				</div>
+
+				{% for department in departments %}
+					<div class="d-md-flex justify-content-between mb-3 mb-md-4 mt-4 mt-md5">
+						<h4>{{ department.name }} বিভাগ </h4>
+						  <!-- url 'department_doctors' department.slug "> -->
+						  <p class="mb-0 mt-2">
+							{{ department.name }} বিভাগের সকল ডাক্তার দেখতে, 
+							<a href="{% url 'department_doctors' department.slug %}" class="text-danger text-decoration-underline">  এখানে ক্লিক করুন</a>
+						  </p>
+						  
+					</div>
+
+					<div class="row">
+						{% for doctor in department.doctors.all %}
+						<div class="col-lg-12">
+							{% include 'doctor/components/doctor_card.html' %}
+						</div>
+						{% endfor %}
+					</div>
+					
+					{% empty %}
+						<p>No doctors available</p>
+
+				{% endfor %}
+
+				
+			</div>
+		</section>
+		<!-- Speciality Section End -->
+
+
 
 		<!-- Department Section -->
 		<section class="section speciality-section-two">
@@ -274,48 +321,7 @@
 		</section> -->
 		<!-- Doctor Section End -->
 		 
-		<!-- Speciality Section -->
-		<section class="section speciality-section-two">
-			<div class="container">
-				<div class="section-header section-header-two">
-					<div class="section-sub-title"><img src="{% static 'img/icons/section-icon.svg' %}" alt="icon">বিভাগ ও ডাক্তার</div>
-					<!-- <h2 class="section-title mb-0">Choose the <span>Plans of your Needs</span></h2> -->
-					<h2 class="section-title mb-0 mt-4">বিভাগ অনুযায়ী ডাক্তারগণ</h2>
-				</div>
-
-				{% for department in departments %}
-					<div class="d-md-flex justify-content-between mb-3 mb-md-4 mt-4 mt-md5">
-						<h4>{{ department.name }} বিভাগ </h4>
-						  <!-- url 'department_doctors' department.slug "> -->
-						  <p class="mb-0 mt-2">
-							{{ department.name }} বিভাগের সকল ডাক্তার দেখতে, 
-							<a href="{% url 'department_doctors' department.slug %}" class="text-danger text-decoration-underline">  এখানে ক্লিক করুন</a>
-						  </p>
-						  
-					</div>
-
-					<div class="row">
-						{% for doctor in department.doctors.all %}
-						<div class="col-lg-12">
-							{% include 'doctor/components/doctor_card.html' %}
-						</div>
-						{% endfor %}
-					</div>
-					
-					{% empty %}
-						<p>No doctors available</p>
-
-				{% endfor %}
-
-				
-			</div>
-		</section>
-
-
-
-
-
-		<!-- Speciality Section End -->
+		
 
 		<!-- Work Section -->
 		<section class="section work-section-two">

@@ -60,3 +60,20 @@ def page_window(current_page, total_pages, visible=5):
 
     return range(start, end + 1)
 
+
+
+# number converter 
+ENGLISH_TO_BANGLA = str.maketrans(
+    "0123456789",
+    "০১২৩৪৫৬৭৮৯"
+)
+
+
+@register.filter
+def bangla_number(value):
+    if value is None:
+        return ""
+    return str(value).translate(ENGLISH_TO_BANGLA)
+
+
+

@@ -1,5 +1,9 @@
 {% load static %}
 
+{% load custom_filters %}
+
+
+
 
     <!-- slug = models.SlugField(unique=True, blank=True)
     bio = models.TextField(blank=True) -->
@@ -53,8 +57,10 @@
                                 <p>
                                     {{ doctor.qualification }} <br>
                                     {{ doctor.designation }} <br>
-                                    <i class="isax isax-archive-14 text-dark me-2"></i> {{ doctor.experience_years }} বছরের অভিজ্ঞতা
-                                    
+
+                                    {% if doctor.experience_years %}
+                                    <i class="isax isax-archive-14 text-dark me-2"></i> {{ doctor.experience_years |bangla_number }} বছরের অভিজ্ঞতা
+                                    {% endif %}
 
                                     <!-- {% for hospital in doctor.hospitals.all %}
                                         {{ hospital.name }}
@@ -64,8 +70,13 @@
                                     {% endfor %} -->
                                 </p>
                                 <p class="d-fle align-items-cente mb-0 fs-14">
+                                    {% if doctor.hospital %}
                                     <i class="fa-solid fa-hospital me-2"></i>{{ doctor.hospital }}
+                                    {% endif %}
+
+                                    {% if doctor.hospital.address %}
                                     <i class="fa-solid fa-location-dot me-2 ms-md-4"></i>{{ doctor.hospital.address }}
+                                    {% endif %}
 
                                     <!-- <a href="#" class="text-primary text-decoration-underline ms-2">Get Direction</a> -->
                                 </p>
@@ -90,12 +101,12 @@
                                     {% if schedule.is_7days %}
                                         <p>
                                             প্রতিদিন <br>
-                                            {{ schedule.start_time|time:"h:i A" }} -  {{ schedule.end_time|time:"h:i A" }}
+                                            {{ schedule.start_time|time:"h:i A" |bangla_number }} -  {{ schedule.end_time|time:"h:i A" |bangla_number }}
                                         </p>
                                     {% else %}
                                         <p>
                                             {{ schedule.get_day_of_week_display }}:
-                                            {{ schedule.start_time | time:"h:i A" }} - {{ schedule.end_time | time:"h:i A" }}
+                                            {{ schedule.start_time | time:"h:i A" |bangla_number }} - {{ schedule.end_time | time:"h:i A" |bangla_number }}
                                         </p>
                                     {% endif %}
 
@@ -111,7 +122,8 @@
                     <div class="d-flex align-items-center flex-wrap row-gap-3">
                         <div class="me-3">
                             <p class="mb-1">পরামর্শ ফি</p>
-                            <h3 class="text-orange">{{ doctor.consultation_fee | floatformat:0 }} টাকা </h3>
+                            <h3 class="text-orange">{{ doctor.consultation_fee | floatformat:0 |bangla_number }} টাকা </h3>
+
                         </div>
                         <!-- <p class="mb-0">Next available at <br>10:00 AM - 15 Oct, Tue</p> -->
                     </div>

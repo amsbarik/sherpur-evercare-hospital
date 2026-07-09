@@ -52118,7 +52118,7 @@ ul li {
   }
 }
 .banner-section-two .banner-content {
-  padding: 130px 0;
+  padding-bottom: 130px;
 }
 @media (max-width: 1199.98px) {
   .banner-section-two .banner-content {
@@ -52168,11 +52168,27 @@ ul li {
   color: #fff;
   font-size: 64px;
   margin-bottom: 10px;
-  text-shadow: -2px 3px 0 rgba(255, 255, 255, 0.4);
+  /* text-shadow: -2px 3px 0 rgba(255, 255, 255, 0.4); */
+}
+
+@media (max-width: 1600px) {
+  .banner-section-two .banner-content h1 {
+    font-size: 48px;
+  }
+}
+@media (max-width: 1400px) {
+  .banner-section-two .banner-content h1 {
+    font-size: 40px;
+  }
+}
+@media (max-width: 1200px) {
+  .banner-section-two .banner-content h1 {
+    font-size: 38px;
+  }
 }
 @media (max-width: 991.98px) {
   .banner-section-two .banner-content h1 {
-    text-shadow: -2px 1px 0 rgba(255, 255, 255, 0.4);
+    /* text-shadow: -2px 1px 0 rgba(255, 255, 255, 0.4); */
   }
 }
 .banner-section-two .banner-content h1 span {
@@ -52210,11 +52226,11 @@ ul li {
 .banner-section-two .banner-img {
   position: relative;
 }
-@media (max-width: 1199.98px) {
+/* @media (max-width: 1199.98px) {
   .banner-section-two .banner-img {
     display: none;
   }
-}
+} */
 .banner-section-two .banner-img .banner-user-call {
   position: absolute;
   top: 25%;
@@ -52233,6 +52249,7 @@ ul li {
   color: var(--gray-900);
   margin-bottom: 0;
 }
+
 .banner-section-two .banner-img .call-items {
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 100px;
@@ -52264,6 +52281,42 @@ ul li {
   background-color: var(--danger);
   color: #fff;
 }
+
+/* updated css  */
+.call-items {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 100px;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  /* position: absolute; */
+  bottom: 10%;
+  left: 8%;
+  gap: 7px;
+  z-index: 1;
+}
+.call-items .item {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+.call-items .item i {
+  font-size: 24px;
+  transition: 0.3s;
+}
+.call-items .item-2 {
+  background-color: var(--danger);
+  color: #fff;
+}
+
+/* updated css  */
+
 .banner-section-two .banner-bg-02 {
   position: absolute;
   top: 0;
