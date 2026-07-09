@@ -89,7 +89,7 @@
 
                                     {% if schedule.is_7days %}
                                         <p>
-                                            শনিবার - শুক্রবার <br>
+                                            প্রতিদিন <br>
                                             {{ schedule.start_time|time:"h:i A" }} -  {{ schedule.end_time|time:"h:i A" }}
                                         </p>
                                     {% else %}
@@ -117,10 +117,12 @@
                     </div>
                     
                     <div>
-                        <p class="mb-2 border rounded-pill text-center"><a href="tel:{{ site_setting.mobile }}" class="btn btn-seconday " title="Pls, click to call">কল করুন : {{ site_setting.mobile }}</a> </p>
-                        <a href="{% url 'appointment' %}" class="btn btn-md btn-primary-gradient d-inline-flex align-items-center rounded-pill">
+                        <p class="mb-2 border rounded-pill text-center"><a href="{% url 'appointment' %}" class="btn btn-seconday " >
                             <i class="isax isax-calendar-1 me-2"></i>
                             অ্যাপয়েন্টমেন্ট বুক করুন
+                        </a> </p>
+                        <a href="tel:{{ site_setting.mobile }}" title="Pls, click to call" class="btn btn-md btn-primary-gradient d-inline-flex align-items-center rounded-pill">
+                            <i class="fa-solid fa-phone me-2"></i>কল করুন : {{ site_setting.mobile }}
                         </a>
 
                     </div>

@@ -548,11 +548,11 @@ h5 {
 
 h6 {
   font-weight: 700;
-  font-size: 18px;
+  font-size: 22px;
 }
 @media (max-width: 767.98px) {
   h6 {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
